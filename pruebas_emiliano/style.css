@@ -1,0 +1,39 @@
+.navbar-nar li
+{
+    display: inline;
+    margin-right: 80px;
+}
+
+.head
+{
+    background: linear-gradient(rgb(7,122,21), 10%, rgb(60, 190, 76));
+}
+
+.icon
+{
+    height: 3%; 
+    width: 3%;
+}
+
+footer
+{
+    position: fixed; 
+    bottom: 0; 
+    width: 100%; 
+    height: fit-content;
+}
+
+.footer_basic {
+    padding: 2rem !important;
+}
+
+.footer_darker
+{
+    padding: .005rem !important;
+}
+
+.link
+{
+    text-decoration: none;
+    color:inherit;
+}
