@@ -12,7 +12,7 @@ public class Direction {
     private String street;
     private byte door;
     private byte floor;
-    private byte stairs;
+    private String stairs;
     
     public Direction(String street){
         this.street = street;
@@ -22,7 +22,7 @@ public class Direction {
         this.door = door;
         this.floor = floor;
     }
-    public Direction(String street, byte door, byte floor, byte stairs){
+    public Direction(String street, byte door, byte floor, String stairs){
         this(street, door, floor);
         this.stairs = stairs;      
     }
@@ -39,7 +39,7 @@ public class Direction {
         this.floor = floor;
     }
 
-    public void setStairs(byte stairs) {
+    public void setStairs(String stairs) {
         this.stairs = stairs;
     }
 
@@ -55,8 +55,13 @@ public class Direction {
         return floor;
     }
 
-    public byte getStairs() {
+    public String getStairs() {
         return stairs;
+    }
+
+    @Override
+    public String toString() {
+        return "Direction{" + "street=" + street + ", door=" + door + ", floor=" + floor + ", stairs=" + stairs + '}';
     }
     
 }

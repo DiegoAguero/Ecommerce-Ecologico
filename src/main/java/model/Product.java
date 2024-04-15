@@ -9,6 +9,7 @@ package model;
  * @author Mati
  */
 public class Product {
+    private int id;
     private String name;
     private String description;
     private float price;
@@ -16,7 +17,8 @@ public class Product {
     private int idCategory;
     private String image_url;
     
-    public Product(String name, String description, float price, int stock, int idCategory, String image_url){
+    public Product(int id, String name, String description, float price, int stock, int idCategory, String image_url){
+        this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
@@ -24,7 +26,9 @@ public class Product {
         this.idCategory = idCategory;
         this.image_url = image_url;
     }
-
+    public int getId(){
+        return this.id;
+    }
     public String getName() {
         return name;
     }
@@ -71,6 +75,11 @@ public class Product {
 
     public void setImage_url(String image_url) {
         this.image_url = image_url;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{ name=" + name + ", description=" + description + ", price=" + price + ", stock=" + stock + ", idCategory=" + idCategory + ", image_url=" + image_url + '}';
     }
     
 }

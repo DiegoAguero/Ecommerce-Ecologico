@@ -41,5 +41,10 @@ public class Detail_Order {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return "Detail_Order{" + "idOrder=" + idOrder + ", idProduct=" + idProduct + ", quantity=" + quantity + '}';
+    }
     
 }

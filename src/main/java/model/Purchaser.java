@@ -30,7 +30,6 @@ public class Purchaser {
     public void setTelephone_number(String telephone_number) {
         this.telephone_number = telephone_number;
     }
-
     public String getName() {
         return name;
     }
@@ -41,6 +40,11 @@ public class Purchaser {
 
     public String getTelephone_number() {
         return telephone_number;
+    }
+
+    @Override
+    public String toString() {
+        return "Purchaser{" + "name=" + name + ", idDirection=" + idDirection + ", telephone_number=" + telephone_number + '}';
     }
     
 }

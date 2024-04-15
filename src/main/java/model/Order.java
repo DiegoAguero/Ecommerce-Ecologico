@@ -30,4 +30,10 @@ public class Order {
     public void setIdPurchaser(int idPurchaser){
         this.idPurchaser = idPurchaser;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" + "date=" + date + ", idPurchaser=" + idPurchaser + '}';
+    }
+    
 }
