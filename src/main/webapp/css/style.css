@@ -1,0 +1,147 @@
+
+/*-----------Header-----------*/
+
+.navbar-nar li
+{
+    display: inline;
+}
+
+#logo{
+    width: 55px;
+    height: 55px;
+}
+
+#cart{
+    width: 30px;
+    height: 33px;
+}
+
+
+.navli{
+    margin-right: 100px;
+}
+
+.head
+{
+    background: linear-gradient(rgb(7,122,21), 10%, rgb(60, 190, 76));
+}
+
+/*-----------Body-----------*/
+
+main
+{
+    background-color: rgb(250, 255, 250);
+    padding: 50px;
+}
+
+/*-----------Lista de cartas-----------*/
+
+.left {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.right {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.cardBackground
+{
+    background-color: rgb(243, 255, 235);
+    border: var(--bs-card-border-width) transparent var(--bs-card-border-color);
+    border-radius: 40%;
+}
+
+
+.cardBorder
+{
+    --bs-card-spacer-y: 1rem;
+    --bs-card-spacer-x: 1rem;
+    --bs-card-title-spacer-y: 0.5rem;
+    --bs-card-title-color: ;
+    --bs-card-subtitle-color: ;
+    --bs-card-border-width: 3px;
+    --bs-card-border-color: rgb(7, 122, 21);
+    --bs-card-border-radius: 10%;
+    --bs-card-box-shadow: ;
+    --bs-card-inner-border-radius: var(--bs-border-radius);
+    --bs-card-cap-padding-y: 0.5rem;
+    --bs-card-cap-padding-x: 1rem;
+    --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
+    --bs-card-cap-color: ;
+    --bs-card-height: ;
+    --bs-card-color: ;
+    --bs-card-bg: rgb(243, 255, 235);;
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: var(--bs-card-height);
+    color: var(--bs-body-color);
+    word-wrap: break-word;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+}
+
+.cardImg
+{
+    padding: 10px;
+}
+
+div.contenedor {
+    margin: 0 auto;
+}
+  
+button
+{
+    background-color: rgb(148,234,141);
+}
+
+.fullWidth
+{
+    width: 100%;
+}
+
+.productList
+{
+    padding-right: 20px;
+}
+
+/*-----------Footer-----------*/
+
+.icon
+{
+    height: 3%; 
+    width: 3%;
+}
+
+footer
+{
+    bottom: 0; 
+    width: 100%; 
+    height: fit-content;
+}
+
+.footer_basic {
+    padding: 2rem !important;
+}
+
+.footer_darker
+{
+    padding: .005rem !important;
+}
+
+.link
+{
+    text-decoration: none;
+    color:inherit;
+}
