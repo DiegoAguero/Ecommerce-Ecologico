@@ -4,25 +4,24 @@
  */
 package model;
 
-import java.time.LocalDateTime;
-
+import java.sql.Date;
 /**
  *
  * @author Mati
  */
 public class Order {
-    private LocalDateTime date;
+    private Date date;
     private int idPurchaser;
 
     public Order(int idPurchaser){
-        this.date = LocalDateTime.now();
+        this.date = new Date(System.currentTimeMillis());
         this.idPurchaser = idPurchaser;
     }
-    public LocalDateTime getDate(){
+    public Date getDate(){
         return this.date;
     }
     public void setDate(){
-        this.date = LocalDateTime.now();
+        this.date = new Date(System.currentTimeMillis());
     }
     public int getIdPurchaser(){
         return this.idPurchaser;
