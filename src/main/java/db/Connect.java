@@ -22,7 +22,7 @@ public class Connect {
             // String DRIVER = props.getProperty("DRIVER");
             // String USER = props.getProperty("USER");
             // String PASSWORD = props.getProperty("PASSWORD");
-            String URL = "jdbc:mysql://localhost/ecommerce_db?autoReconnect=true&useSSL=false";
+            String URL = "jdbc:mysql://localhost/ecommerce_db?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=false&characterEncoding=UTF-8";
             String DRIVER = "com.mysql.cj.jdbc.Driver";
             String USER = "root";
             String PASSWORD = "123456";
