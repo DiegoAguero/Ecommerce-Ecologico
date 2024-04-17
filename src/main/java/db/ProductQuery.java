@@ -29,22 +29,24 @@ public class ProductQuery {
         return rowsInserted;
     }
     public ArrayList orderByCategory(int idCat, Connection stablishConnection) throws SQLException{
-        String SQLQuery = "SELECT * FROM productos WHERE idCategory = " + idCat;
+        String SQLQuery = "SELECT * FROM productos WHERE idCategoria = " + idCat;
         Statement st = stablishConnection.createStatement();
         ResultSet rs = st.executeQuery(SQLQuery);
-        ArrayList<Product> productList = new ArrayList<>();
+        ArrayList<Product> productList = new ArrayList<Product>();
         while(rs.next()){
             int id = rs.getInt("id");
             String name = rs.getString("nombre");
             String description = rs.getString("descripcion");
             float price = rs.getFloat("precio");
             int stock = rs.getInt("stock");
-            int idCategory = rs.getInt("idCategory");
+            int idCategory = rs.getInt("idCategoria");
             String image_url = rs.getString("imagen_url");
             Product product = new Product(id, name, description, price, stock, idCategory, image_url);
             productList.add(product);
         }
         return productList;
     }
+
+
 
 }

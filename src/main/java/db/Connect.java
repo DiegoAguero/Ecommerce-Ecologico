@@ -8,8 +8,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  * @author Diego Aguero, David Vazquez, David Emiliano
  */
@@ -19,15 +17,19 @@ public class Connect {
         Connection connection = null;
         try {
             Properties props = new Properties();
-            props.load(new FileInputStream("config/db.properties"));
-            String URL = props.getProperty("URL");
-            String DRIVER = props.getProperty("DRIVER");
-            String USER = props.getProperty("USER");
-            String PASSWORD = props.getProperty("PASSWORD");
+            // props.load(new FileInputStream("./db.properties"));
+            // String URL = props.getProperty("URL");
+            // String DRIVER = props.getProperty("DRIVER");
+            // String USER = props.getProperty("USER");
+            // String PASSWORD = props.getProperty("PASSWORD");
+            String URL = "jdbc:mysql://localhost/ecommerce_db?autoReconnect=true&useSSL=false";
+            String DRIVER = "com.mysql.cj.jdbc.Driver";
+            String USER = "root";
+            String PASSWORD = "123456";
             Class.forName(DRIVER);
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (ClassNotFoundException | IOException ex) {
-            Logger.getLogger(Connect.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
         return connection;
     }
