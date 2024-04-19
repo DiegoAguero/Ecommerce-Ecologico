@@ -1,20 +1,34 @@
 $(document).ready(function(){
-    // let url = window.location.href;
-    // let id = url.substring(url.lastIndexOf('=') + 1);
-    // console.log('id:', id);
+    let url = window.location.href;
+    let id = url.substring(url.lastIndexOf('=') + 1);
+    console.log('id:', id);
     $.ajax({
-        url: `products?id=1`,
+        url: `apiProducts?id=${id}`,
         type: 'GET',
         dataType:'json',
         success: function(data){
             console.log(data);
             $.each(data, function(index, product){
-                var listItem = "<li>" + product.name + " - $" + product.price + "</li>";
+                // var listItem = `<li id=${product.id}>` + product.name + " - $" + product.price + "</li>";
+                let listItem = `
+                <li class="productList" id=${product.id}>
+                    <div class="cardBorder h-100" style="width: 18rem;">
+                    <img src="${product.image_url}" class="card-img-top cardImg" alt="Producto">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">${product.name}</h5>
+                        <p class="card-text text-center">€${product.price}</p>
+                    </div>
+                    <div class="card-body contenedor">
+                        <button>Añadir a la cesta</a>
+                    </div>
+                    </div>
+                </li>
+                `
                 $("#products").append(listItem);
             });
         },
         error: function(request, status, error){
-            alert(status);
+            alert(status, error);
         }
     })
 });
