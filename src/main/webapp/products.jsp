@@ -43,7 +43,7 @@
                             </li>
                         </ul>
                     </div>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="carrito.html">
                     <img id="cart" src="./images/carrito.png" alt="Bootstrap" width="30" height="24" />
                     </a>
                 </div>

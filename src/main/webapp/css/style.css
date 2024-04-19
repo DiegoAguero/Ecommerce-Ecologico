@@ -50,6 +50,17 @@ td
     background-color: rgb(243, 255, 235);
 }
 
+.tableText
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.tdimg
+{
+    width:50px;
+}
 .tableimg
 {
     height: 150px;
