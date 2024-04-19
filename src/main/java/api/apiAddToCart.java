@@ -2,30 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller;
+package api;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.*;
 
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import db.Connect;
 import db.ProductQuery;
 import model.Product;
-import db.Connect;
-import java.sql.*;
-import java.util.ArrayList;
-
-//Esta libreria me permite convertir ArrayList en JSON
-import com.google.gson.Gson;
+import com.google.gson.*;
 /**
+ *
  * @author Mati
  */
-@WebServlet(name = "apiProducts", urlPatterns = {"/apiProducts"})
-public class apiProducts extends HttpServlet {
+@WebServlet(name = "apiAddToCart", urlPatterns = {"/apiAddToCart"})
+public class apiAddToCart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,7 +36,6 @@ public class apiProducts extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json");
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -52,22 +48,27 @@ public class apiProducts extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         processRequest(request, response);
-        response.setCharacterEncoding("UTF-8");
         ProductQuery productQuery = new ProductQuery();
         Gson gson = new Gson();
-        int idCategory = Integer.parseInt(request.getParameter("id"));
+        // System.out.println("hola");
+        // if(request.getParameter("idProd") == null){
+        //     throw new Error("Es nulo por alguna razon");
+        // }
+        int idProduct = Integer.parseInt(request.getParameter("idProd"));
+        System.out.println(Integer.parseInt(request.getParameter("idProd")));
         try {
-            Connection databaseConnection = Connect.getConnection(); 
-            ArrayList<Product> list = productQuery.orderByCategory(idCategory, databaseConnection);
-            String jsonData = gson.toJson(list);
-            response.getWriter().write(jsonData);
-            System.out.println(jsonData);
-            // response.sendRedirect(request.getContextPath() + "/products.jsp?id=" + idCategory);
+            Connection databaseConnection = Connect.getConnection();
+            Product getProd = productQuery.getProductById(idProduct, databaseConnection);
+            System.out.println(getProd);
+            // String jsonData = gson.toJson(getProd);
+            // response.getWriter().write(jsonData);
+            // System.out.println(jsonData);
         } catch (SQLException e) {
             e.printStackTrace();
-        }    
+        }
     }
 
     /**

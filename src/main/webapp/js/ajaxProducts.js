@@ -1,13 +1,20 @@
-$(document).ready(function(){
-    let url = window.location.href;
-    let id = url.substring(url.lastIndexOf('=') + 1);
-    console.log('id:', id);
+// $(document).ready(function(){
+//     // let url = window.location.href;
+//     // let id = url.substring(url.lastIndexOf('=') + 1);
+//     // console.log('id:', id);
+
+// $(document).ready(function(){(
+
+// ;
+// });
+function reloadCategory(id){
     $.ajax({
         url: `apiProducts?id=${id}`,
         type: 'GET',
         dataType:'json',
         success: function(data){
             console.log(data);
+            $("#products").html('');
             $.each(data, function(index, product){
                 // var listItem = `<li id=${product.id}>` + product.name + " - $" + product.price + "</li>";
                 let listItem = `
@@ -19,7 +26,7 @@ $(document).ready(function(){
                         <p class="card-text text-center">€${product.price}</p>
                     </div>
                     <div class="card-body contenedor">
-                        <button>Añadir a la cesta</a>
+                        <button onclick="addProductToCart(${product.id})">Añadir a la cesta</button>
                     </div>
                     </div>
                 </li>
@@ -30,5 +37,5 @@ $(document).ready(function(){
         error: function(request, status, error){
             alert(status, error);
         }
-    })
-});
+    });
+}

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,16 +31,16 @@
                     <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
                         <ul class="navbar-nav nav justify-content-center">
                             <li class="nav-item navli">
-                                <a class="nav-link active" href="/Ecommerce-Ecologico/products.jsp?id=1">Frutas y verduras</a>
+                                <button class="nav-link active" onclick="reloadCategory(1)">Frutas y verduras</button>
                             </li>
                             <li class="nav-item navli">
-                                <a class="nav-link active" href="/Ecommerce-Ecologico/products.jsp?id=2">Frescos</a>
+                                <button class="nav-link active" onclick="reloadCategory(2)">Frescos</button>
                             </li>
                             <li class="nav-item navli">
-                                <a class="nav-link active" href="/Ecommerce-Ecologico/products.jsp?id=3">Dulces y desayunos</a>
+                                <button class="nav-link active" onclick="reloadCategory(3)">Dulces y desayunos</button>
                             </li>
                             <li class="nav-item navli">
-                                <a class="nav-link active" href="/Ecommerce-Ecologico/products.jsp?id=4">Bebidas y bodegas</a>
+                                <button class="nav-link active" onclick="reloadCategory(4)">Bebidas y bodegas</button>
                             </li>
                         </ul>
                     </div>
@@ -51,9 +52,23 @@
         </header>
         <ul id="products" class="d-flex flex-row list-group-horizontal position-relative overflow-auto fullWidth mt-4"
         style="list-style: none; scrollbar-width: none">
-
+            <c:forEach var="product" items="${allProds}">
+                <li class="productList" id=${product.id}>
+                    <div class="cardBorder h-100" style="width: 18rem;">
+                    <img src="${product.image_url}" class="card-img-top cardImg" alt="Producto">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">${product.name}</h5>
+                        <p class="card-text text-center">€${product.price}</p>
+                    </div>
+                    <div class="card-body contenedor">
+                        <button onclick="addProductToCart(${product.id})">Añadir a la cesta</button>
+                    </div>
+                    </div>
+                </li>
+            </c:forEach>
         </ul>
         <script src="./js/ajaxProducts.js"></script>
+        <script src="js/cart.js"></script>
         <footer class="text-center text-lg-start text-white"
         style="background: linear-gradient(rgb(60, 190, 76), 80%, rgb(7,122,21)); ">
         <!-- Grid container -->
