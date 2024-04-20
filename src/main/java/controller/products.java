@@ -55,19 +55,15 @@ public class products extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
         response.setCharacterEncoding("UTF-8");
-        // RequestDispatcher rd = request.getRequestDispatcher("products.jsp");
         ProductQuery productQuery = new ProductQuery();
         Gson gson = new Gson();
         int idCategory = Integer.parseInt(request.getParameter("id"));
         try {
             Connection databaseConnection = Connect.getConnection(); 
             ArrayList<Product> list = productQuery.orderByCategory(idCategory, databaseConnection);
-            System.out.println(list);
             String jsonData = gson.toJson(list);
-            System.out.println(jsonData);
-            // request.setAttribute("jsonProducts", jsonData);
+            response.sendRedirect(request.getContextPath() + "/products.jsp");
             response.getWriter().write(jsonData);
-            // rd.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
         }    
