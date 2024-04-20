@@ -54,7 +54,7 @@
         style="list-style: none; scrollbar-width: none">
             <c:forEach var="product" items="${allProds}">
                 <li class="productList" id=${product.id}>
-                    <div class="cardBorder h-100" style="width: 18rem;">
+                    <div class="card h-100" style="width: 18rem;">
                     <img src="${product.image_url}" class="card-img-top cardImg" alt="Producto">
                     <div class="card-body">
                         <h5 class="card-title text-center">${product.name}</h5>

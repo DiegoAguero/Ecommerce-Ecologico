@@ -58,14 +58,12 @@ public class apiAddToCart extends HttpServlet {
         //     throw new Error("Es nulo por alguna razon");
         // }
         int idProduct = Integer.parseInt(request.getParameter("idProd"));
-        System.out.println(Integer.parseInt(request.getParameter("idProd")));
         try {
             Connection databaseConnection = Connect.getConnection();
             Product getProd = productQuery.getProductById(idProduct, databaseConnection);
-            System.out.println(getProd);
-            // String jsonData = gson.toJson(getProd);
-            // response.getWriter().write(jsonData);
-            // System.out.println(jsonData);
+            String jsonData = gson.toJson(getProd);
+            response.getWriter().write(jsonData);
+            System.out.println("first petition");
         } catch (SQLException e) {
             e.printStackTrace();
         }

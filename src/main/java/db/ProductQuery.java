@@ -68,7 +68,7 @@ public class ProductQuery {
         String SQLQuery = "SELECT * FROM productos WHERE id = " + id;
         Statement st = stablishConnection.createStatement();
         ResultSet rs = st.executeQuery(SQLQuery);
-        Product product;
+        Product product = null;
         while(rs.next()){
             int prodId = rs.getInt("id");
             String name = rs.getString("nombre");
@@ -79,7 +79,7 @@ public class ProductQuery {
             String image_url = rs.getString("imagen_url");
             product = new Product(prodId, name, description, price, stock, idCategory, image_url);
         }
-
+        System.out.println(product);
         return product;
     }
 

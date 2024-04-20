@@ -13,7 +13,7 @@ function reloadCategory(id){
         type: 'GET',
         dataType:'json',
         success: function(data){
-            console.log(data);
+            // console.log(data);
             $("#products").html('');
             $.each(data, function(index, product){
                 // var listItem = `<li id=${product.id}>` + product.name + " - $" + product.price + "</li>";
