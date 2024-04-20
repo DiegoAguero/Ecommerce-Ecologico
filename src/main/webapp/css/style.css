@@ -37,7 +37,6 @@ main
 table, tr
 {
     border:3px solid black;
-    width: 90%;
     height: auto;
     margin: 10px;
     padding: 10px;
@@ -46,16 +45,25 @@ table, tr
 td
 {
     border: 3px solid black;
-    width: 20px;
     height: 150px;
     padding: 10px;
     background-color: rgb(243, 255, 235);
 }
 
+.tableText
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.tdimg
+{
+    width:50px;
+}
 .tableimg
 {
-    width: 100%;
-    height: 100%;
+    height: 150px;
 }
 
 /*-----------Lista de cartas-----------*/
@@ -79,41 +87,6 @@ td
     background-color: rgb(243, 255, 235);
     border: var(--bs-card-border-width) transparent var(--bs-card-border-color);
     border-radius: 40%;
-}
-
-
-.cardBorder
-{
-    --bs-card-spacer-y: 1rem;
-    --bs-card-spacer-x: 1rem;
-    --bs-card-title-spacer-y: 0.5rem;
-    --bs-card-title-color: ;
-    --bs-card-subtitle-color: ;
-    --bs-card-border-width: 3px;
-    --bs-card-border-color: rgb(7, 122, 21);
-    --bs-card-border-radius: 10%;
-    --bs-card-box-shadow: ;
-    --bs-card-inner-border-radius: var(--bs-border-radius);
-    --bs-card-cap-padding-y: 0.5rem;
-    --bs-card-cap-padding-x: 1rem;
-    --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
-    --bs-card-cap-color: ;
-    --bs-card-height: ;
-    --bs-card-color: ;
-    --bs-card-bg: rgb(243, 255, 235);;
-    --bs-card-img-overlay-padding: 1rem;
-    --bs-card-group-margin: 0.75rem;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    height: var(--bs-card-height);
-    color: var(--bs-body-color);
-    word-wrap: break-word;
-    background-color: var(--bs-card-bg);
-    background-clip: border-box;
-    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
-    border-radius: var(--bs-card-border-radius);
 }
 
 .cardImg

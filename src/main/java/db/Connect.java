@@ -16,7 +16,7 @@ public class Connect {
     public static Connection getConnection() throws SQLException{
         Connection connection = null;
         try {
-            Properties props = new Properties();
+            // Properties props = new Properties();
             // props.load(new FileInputStream("./db.properties"));
             // String URL = props.getProperty("URL");
             // String DRIVER = props.getProperty("DRIVER");

@@ -13,15 +13,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.*;
+import java.sql.*;
 import db.ProductQuery;
 import model.Product;
 import db.Connect;
-import java.sql.*;
-import java.util.ArrayList;
-
-//Esta libreria me permite convertir ArrayList en JSON
-import com.google.gson.Gson;
 /**
+ *js
  * @author Mati
  */
 @WebServlet(name = "products", urlPatterns = {"/products"})
@@ -38,7 +36,7 @@ public class products extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json");
+        response.setContentType("text/html;charset=UTF-8");
 
     }
 
@@ -52,21 +50,20 @@ public class products extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         processRequest(request, response);
-        response.setCharacterEncoding("UTF-8");
         ProductQuery productQuery = new ProductQuery();
-        Gson gson = new Gson();
-        int idCategory = Integer.parseInt(request.getParameter("id"));
+        RequestDispatcher rd = request.getRequestDispatcher("products.jsp");
         try {
-            Connection databaseConnection = Connect.getConnection(); 
-            ArrayList<Product> list = productQuery.orderByCategory(idCategory, databaseConnection);
-            String jsonData = gson.toJson(list);
-            response.sendRedirect(request.getContextPath() + "/products.jsp");
-            response.getWriter().write(jsonData);
-        } catch (SQLException e) {
+            Connection connect = Connect.getConnection();
+            ArrayList<Product> productList = productQuery.getAllProducts(connect);
+            System.out.println(productList);
+            request.setAttribute("allProds", productList);
+            rd.forward(request, response);
+        } catch (Exception e) {
             e.printStackTrace();
-        }    
+        }
     }
 
     /**
