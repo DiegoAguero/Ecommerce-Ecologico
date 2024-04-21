@@ -53,17 +53,12 @@ public class apiAddToCart extends HttpServlet {
         processRequest(request, response);
         ProductQuery productQuery = new ProductQuery();
         Gson gson = new Gson();
-        // System.out.println("hola");
-        // if(request.getParameter("idProd") == null){
-        //     throw new Error("Es nulo por alguna razon");
-        // }
         int idProduct = Integer.parseInt(request.getParameter("idProd"));
         try {
             Connection databaseConnection = Connect.getConnection();
             Product getProd = productQuery.getProductById(idProduct, databaseConnection);
             String jsonData = gson.toJson(getProd);
             response.getWriter().write(jsonData);
-            System.out.println("first petition");
         } catch (SQLException e) {
             e.printStackTrace();
         }

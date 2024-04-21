@@ -33,11 +33,11 @@ public class CategoryQuery {
         }
         return rowsUpdated;
     }
-    public ArrayList getCategorys(Connection stablishConnection) throws SQLException{
+    public ArrayList<String> getCategorys(Connection stablishConnection) throws SQLException{
         String SQLQuery = "SELECT * FROM categorias";
         Statement st = stablishConnection.createStatement();
         ResultSet rs = st.executeQuery(SQLQuery);
-        ArrayList<String> categoryList = new ArrayList<>();
+        ArrayList<String> categoryList = new ArrayList<String>();
         while(rs.next()){
             String nameOfCategory = rs.getString("nombre");
             categoryList.add(nameOfCategory);

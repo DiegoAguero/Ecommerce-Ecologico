@@ -58,7 +58,6 @@ public class products extends HttpServlet {
         try {
             Connection connect = Connect.getConnection();
             ArrayList<Product> productList = productQuery.getAllProducts(connect);
-            // System.out.println(productList);
             request.setAttribute("allProds", productList);
             rd.forward(request, response);
         } catch (Exception e) {

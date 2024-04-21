@@ -25,7 +25,7 @@ public class Detail_OrderQuery {
         }
         return rowsInserted;
     }
-    public ArrayList showPurchaseDetails(Connection stablishConnection) throws SQLException{
+    public ArrayList<PurchaseDetails> showPurchaseDetails(Connection stablishConnection) throws SQLException{
         String SQLQuery = "SELECT dp.cantidad, p.nombre, p.precio FROM detalles_pedidos dp JOIN productos p ON dp.idProducto = p.id";
         Statement st = stablishConnection.createStatement();
         ResultSet rs = st.executeQuery(SQLQuery);

@@ -58,22 +58,13 @@ public class apiProducts extends HttpServlet {
         ProductQuery productQuery = new ProductQuery();
         Gson gson = new Gson();
         int idCategory = Integer.parseInt(request.getParameter("id")); 
-        // try{
-        //     idCategory = Integer.parseInt(request.getParameter("id"));
-        // }catch(Exception e){
-        //     Connection databaseConnection = Connect.getConnection(); 
-        //     ArrayList<Product> list = productQuery.getAllProducts(databaseConnection);
-        //     String jsonData = gson.toJson(list);
-        //     response.getWriter().write(jsonData);
-        //     System.out.println(jsonData);
-        // }
+
         try {
             Connection databaseConnection = Connect.getConnection(); 
             ArrayList<Product> list = productQuery.orderByCategory(idCategory, databaseConnection);
             String jsonData = gson.toJson(list);
             response.getWriter().write(jsonData);
             System.out.println(jsonData);
-            // response.sendRedirect(request.getContextPath() + "/products.jsp?id=" + idCategory);
         } catch (SQLException e) {
             e.printStackTrace();
         }    

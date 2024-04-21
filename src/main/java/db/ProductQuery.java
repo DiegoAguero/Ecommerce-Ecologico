@@ -28,7 +28,7 @@ public class ProductQuery {
         }
         return rowsInserted;
     }
-    public ArrayList orderByCategory(int idCat, Connection stablishConnection) throws SQLException{
+    public ArrayList<Product> orderByCategory(int idCat, Connection stablishConnection) throws SQLException{
         String SQLQuery = "SELECT * FROM productos WHERE idCategoria = " + idCat;
         Statement st = stablishConnection.createStatement();
         ResultSet rs = st.executeQuery(SQLQuery);

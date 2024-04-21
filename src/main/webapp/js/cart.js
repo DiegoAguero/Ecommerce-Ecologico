@@ -1,9 +1,7 @@
 let cartProducts = [];
-// document.addEventListener("DOMContentLoaded", ()=>{
-//     cartProducts = JSON.parse(localStorage.getItem('cart')) || []; 
-// })
 window.onload = ()=>{
-    cartProducts = JSON.parse(localStorage.getItem('cart')) || []; 
+    cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+    cartLoad(); 
 }
 function addProductToCart(id){
     $.ajax({
@@ -23,17 +21,15 @@ function addProductToCart(id){
                         obj[product] = data[product];
                         cartProducts.push(obj);
                     }
-
+                    cartLoad();
                 }
             }
-            // console.log(cartProducts);
         }
     });
-    cartLoad();
 }
 function cartLoad(){
     localStorage.setItem('cart', JSON.stringify(cartProducts));
 }
 function showCart(){
-    
+    //TODO showCart LOGIC (finalizarCompra.html)
 }
