@@ -25,6 +25,19 @@ function addProductToCart(id){
         }
     });
 }
+
+function removeFromCart(productId){
+    cartProducts.map(prod=>{
+        if(prod.id === productId){
+            if(prod.cantidad === 1){
+                cartProducts = cartProducts.filter(product => product.id !== productId);
+            }
+            prod.cantidad--;
+            cartLoad();
+        }
+    });
+    
+}
 function cartLoad(){
     localStorage.setItem('cart', JSON.stringify(cartProducts));
 }
