@@ -13,15 +13,21 @@ import java.sql.*;
 import model.Purchaser;
 public class PurchaserQuery {
     public int insertPurchaser(Purchaser purchaser, Connection stablishConnection) throws SQLException{
-        String SQLQuery = "INSERT INTO compradores (nombre, idDireccion, telefono) VALUES (?, ?, ?)";
+        String SQLQuery = "INSERT INTO compradores (nombre, idDireccion, telefono, email) VALUES (?, ?, ?, ?)";
         PreparedStatement st = stablishConnection.prepareStatement(SQLQuery);
         st.setString(1, purchaser.getName());
         st.setInt(2, purchaser.getIdDirection());
         st.setString(3, purchaser.getTelephone_number());
+        st.setString(4, purchaser.getEmail());
         int rowsInserted = st.executeUpdate();
+        ResultSet id = st.getGeneratedKeys();
+        int getId = 0;
+        if(id.next()){
+            getId = id.getInt(1);
+        }
         if(rowsInserted == 0){
             throw new Error("Error inserting an Purchaser...");
         }
-        return rowsInserted;
+        return getId;
     }
 }

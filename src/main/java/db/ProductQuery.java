@@ -79,7 +79,6 @@ public class ProductQuery {
             String image_url = rs.getString("imagen_url");
             product = new Product(prodId, name, description, price, stock, idCategory, image_url);
         }
-        System.out.println(product);
         return product;
     }
 

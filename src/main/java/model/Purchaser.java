@@ -12,13 +12,16 @@ public class Purchaser {
     private String name;
     private int idDirection;
     private String telephone_number;
-
-    public Purchaser(String name, int idDirection, String telephone_number){
+    private String email;
+    public Purchaser(String name, int idDirection, String telephone_number, String email){
         this.name = name;
         this.idDirection = idDirection;
         this.telephone_number = telephone_number;
+        this.email = email;
     }
-
+    public void setEmail(String email){
+        this.email = email;
+    }
     public void setName(String name) {
         this.name = name;
     }
@@ -30,6 +33,11 @@ public class Purchaser {
     public void setTelephone_number(String telephone_number) {
         this.telephone_number = telephone_number;
     }
+
+    public String getEmail(){
+        return this.email;
+    }
+
     public String getName() {
         return name;
     }

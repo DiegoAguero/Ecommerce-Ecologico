@@ -21,7 +21,7 @@ public class Detail_OrderQuery {
         st.setInt(3, detail_order.getQuantity());
         int rowsInserted = st.executeUpdate();
         if(rowsInserted == 0){
-            throw new Error("Error inserting an Category...");
+            throw new Error("Error inserting the Detail_Order...");
         }
         return rowsInserted;
     }

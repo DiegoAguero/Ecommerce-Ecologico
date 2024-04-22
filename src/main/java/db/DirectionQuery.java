@@ -12,17 +12,23 @@ import model.Direction;
 public class DirectionQuery {
     public DirectionQuery(){}
     public int insertDirection(Direction direction, Connection stablishConnection) throws SQLException{
-        String SQLQuery = "INSERT INTO direcciones (calle, puerta, piso, escalera) VALUES  (?, ?, ?, ?)";
+        String SQLQuery = "INSERT INTO direcciones (calle, puerta, piso, escalera, codigoPostal) VALUES  (?, ?, ?, ?, ?)";
         PreparedStatement st = stablishConnection.prepareStatement(SQLQuery);
         st.setString(1, direction.getStreet());
-        st.setInt(1, direction.getDoor());
-        st.setInt(2, direction.getFloor());
-        st.setString(3, direction.getStairs());
+        st.setInt(2, direction.getDoor());
+        st.setInt(3, direction.getFloor());
+        st.setString(4, direction.getStairs());
+        st.setString(5, direction.getPostalCode());
         int rowsInserted = st.executeUpdate();
-        if(rowsInserted == 0){
-            throw new Error("Error updating the Category...");
+        ResultSet id = st.getGeneratedKeys();
+        int getId = 0;
+        if(id.next()){
+            getId = id.getInt(1);
         }
-        return rowsInserted;
+        if(rowsInserted == 0){
+            throw new Error("Error inserting the Direction...");
+        }
+        return getId;
     }
 
 }

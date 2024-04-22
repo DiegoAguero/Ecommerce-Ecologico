@@ -4,25 +4,34 @@
  */
 package api;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.*;
+import java.sql.SQLException;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import db.Detail_OrderQuery;
+import model.Detail_Order;
 import db.Connect;
-import db.ProductQuery;
-import model.Product;
+import db.OrderQuery;
+import model.Order;
+import db.PurchaserQuery;
+import model.Purchaser;
+import model.Direction;
+import model.FormData;
+import db.DirectionQuery;
+import java.sql.*;
 import com.google.gson.*;
 /**
  *
  * @author Mati
  */
-@WebServlet(name = "apiAddToCart", urlPatterns = {"/apiAddToCart"})
-public class apiAddToCart extends HttpServlet {
+@WebServlet(name = "apiCheckout", urlPatterns = {"/apiCheckout"})
+public class apiCheckout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,7 +44,8 @@ public class apiAddToCart extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json");
+        response.setContentType("text/html;charset=UTF-8");
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -51,19 +61,6 @@ public class apiAddToCart extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        ProductQuery productQuery = new ProductQuery();
-        Gson gson = new Gson();
-        System.out.println(request.getParameter("idProd"));
-        int idProduct = Integer.parseInt(request.getParameter("idProd"));
-        try {
-            Connection databaseConnection = Connect.getConnection();
-            Product getProd = productQuery.getProductById(idProduct, databaseConnection);
-            String jsonData = gson.toJson(getProd);
-            response.getWriter().write(jsonData);
-            System.out.println(jsonData);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -78,6 +75,37 @@ public class apiAddToCart extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        BufferedReader reader = request.getReader();
+        StringBuilder requestBody = new StringBuilder();
+        String line;
+        while((line = reader.readLine()) != null){
+            requestBody.append(line);
+        }
+        Gson gson = new Gson();
+        FormData data = gson.fromJson(requestBody.toString(), FormData.class);
+        DirectionQuery directionQuery = new DirectionQuery();
+        PurchaserQuery purchaserQuery = new PurchaserQuery();
+        OrderQuery orderQuery = new OrderQuery();
+        System.out.println(data);
+        // try {
+            // Connection connect = Connect.getConnection();
+            // //Create direction and get idDirection
+            // String street = request.getParameter("street");
+            // String postalCode = request.getParameter("postalCode");
+            // byte door = Byte.valueOf(request.getParameter("door"));
+            // byte floor = Byte.valueOf(request.getParameter("floor"));
+            // String stairs = request.getParameter("stairs");
+            // int idDirection = directionQuery.insertDirection(new Direction(street, postalCode, door, floor, stairs), connect);
+            // //Create purchaser and get idPurchaser
+            // String name = request.getParameter("name");
+            // String email = request.getParameter("email");
+            // String telephoneNumber = request.getParameter("telephone");
+            // int idPurchaser = purchaserQuery.insertPurchaser(new Purchaser(name, idDirection, telephoneNumber, email), connect);
+            // int idOrder = orderQuery.insertQuery(new Order(idPurchaser), connect);
+            
+        // } catch (SQLException e) {
+        //     e.printStackTrace();
+        // }
     }
 
     /**

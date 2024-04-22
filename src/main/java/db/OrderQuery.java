@@ -16,9 +16,14 @@ public class OrderQuery {
         st.setDate(1, order.getDate());
         st.setInt(2, order.getIdPurchaser());
         int rowsInserted = st.executeUpdate();
+        ResultSet id = st.getGeneratedKeys();
+        int getId = 0;
+        if(id.next()){
+            getId = id.getInt(1);
+        }
         if(rowsInserted == 0){
             throw new Error("Error inserting an Category...");
         }
-        return rowsInserted;
+        return getId;
     }
 }

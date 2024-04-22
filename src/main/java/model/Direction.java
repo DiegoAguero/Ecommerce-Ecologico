@@ -13,17 +13,18 @@ public class Direction {
     private byte door;
     private byte floor;
     private String stairs;
-    
-    public Direction(String street){
+    private String postalCode;
+    public Direction(String street, String postalCode){
         this.street = street;
+        this.postalCode = postalCode;
     }
-    public Direction(String street, byte door, byte floor){
-        this(street);
+    public Direction(String street, String postalCode, byte door, byte floor){
+        this(street, postalCode);
         this.door = door;
         this.floor = floor;
     }
-    public Direction(String street, byte door, byte floor, String stairs){
-        this(street, door, floor);
+    public Direction(String street, String postalCode, byte door, byte floor, String stairs){
+        this(street, postalCode, door, floor);
         this.stairs = stairs;      
     }
 
@@ -42,7 +43,12 @@ public class Direction {
     public void setStairs(String stairs) {
         this.stairs = stairs;
     }
-
+    public void setPostalCode(String postalCode){
+        this.postalCode = postalCode;
+    }
+    public String getPostalCode(){
+        return this.postalCode;
+    }
     public String getStreet() {
         return street;
     }

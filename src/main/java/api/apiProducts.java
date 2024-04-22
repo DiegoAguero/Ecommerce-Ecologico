@@ -64,7 +64,6 @@ public class apiProducts extends HttpServlet {
             ArrayList<Product> list = productQuery.orderByCategory(idCategory, databaseConnection);
             String jsonData = gson.toJson(list);
             response.getWriter().write(jsonData);
-            System.out.println(jsonData);
         } catch (SQLException e) {
             e.printStackTrace();
         }    
