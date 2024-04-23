@@ -31,12 +31,13 @@
     display: flex; 
     width: 300px; 
     border: 3px solid rgb(7,122,21);
-    background-color: rgb(250, 255, 250);
+    background-color: rgb(219, 255, 219);
     margin-bottom: 5px;
 }
 .carritoul
 {
-
+    border: 3px solid rgb(7,122,21);
+    padding: 10px;
     list-style: none;
 }
 
@@ -47,11 +48,39 @@
 }
 
 .carritoi{
-    padding-top: 25px;
+    padding-top: 0px;
     padding-bottom: 0px;
 }
 
 /*-----------Body-----------*/
+
+.left {
+    position: absolute;
+    margin-left: 10px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.right {
+    position: absolute;
+    margin-right: 10px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+.scroll-images::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+    background-color: #aaa;
+}
+
+.scroll-images::-webkit-scrollbar-thumb {
+    background-color: black;
+}
 
 main
 {
@@ -107,12 +136,6 @@ td
     transform: translateY(-50%);
 }
 
-.cardBackground
-{
-    background-color: rgb(243, 255, 235);
-    border: var(--bs-card-border-width) transparent var(--bs-card-border-color);
-    border-radius: 40%;
-}
 
 .cardImg
 {
@@ -126,6 +149,12 @@ div.contenedor {
 button
 {
     background-color: rgb(148,234,141);
+}
+
+.trashbut
+{
+    background-color: inherit;
+    border: 0px solid white;
 }
 
 .fullWidth
