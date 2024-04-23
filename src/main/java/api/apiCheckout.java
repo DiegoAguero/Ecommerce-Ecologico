@@ -75,10 +75,10 @@ public class apiCheckout extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        response.setContentType("application/json");
         BufferedReader reader = request.getReader();
         StringBuilder requestBody = new StringBuilder();
         String line;
-//        System.out.println(reader);
         while((line = reader.readLine()) != null){
             requestBody.append(line);
         }
@@ -104,7 +104,8 @@ public class apiCheckout extends HttpServlet {
             String email = jsonObject.get("email").getAsString();
             String telephoneNumber = jsonObject.get("telephone").getAsString();
             int idPurchaser = purchaserQuery.insertPurchaser(new Purchaser(name, idDirection, telephoneNumber, email), connect);
-            int idOrder = orderQuery.insertQuery(new Order(idPurchaser), connect);
+            float totalPrice = jsonObject.get("totalPrice").getAsFloat();
+            int idOrder = orderQuery.insertQuery(new Order(idPurchaser, totalPrice), connect);
             //Create and set the idOrder, idProduct and quantity to Detail_Order
             for (int i = 0; i < cartArray.size(); i++) {
                 JsonObject item = cartArray.get(i).getAsJsonObject();
@@ -112,6 +113,8 @@ public class apiCheckout extends HttpServlet {
                 int productQuantity = item.get("quantity").getAsInt();
                 detail_OrderQuery.insertDetail_Order(new Detail_Order(idOrder, idProduct, productQuantity), connect);
             }
+            response.getWriter().write("{status: 'success'}");
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

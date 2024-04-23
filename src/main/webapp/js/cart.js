@@ -2,8 +2,7 @@ var cartProducts = [];
 document.addEventListener("DOMContentLoaded", ()=>{
     cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
     cartLoad();
-    let form = document.getElementById("form");
-    form.addEventListener('submit', handleForm);
+
 })
 function addProductToCart(id){
     $.ajax({
@@ -73,47 +72,7 @@ function showCart(){
     `
     getUlById.insertAdjacentHTML('beforeend', totalPriceHTML);
 }
-function handleForm(event){
-    event.preventDefault();
-    // Retrieve form data
-    let street = document.getElementById('street').value;
-    let postalCode = document.getElementById('postalCode').value;
-    let door = document.getElementById('door').value;
-    let floor = document.getElementById('floor').value;
-    let stairs = document.getElementById('stairs').value;
-    let name = document.getElementById('name').value;
-    let email = document.getElementById('email').value;
-    let telephoneNumber = document.getElementById('telephone').value;
 
-    // Retrieve data from localStorage
-    let cartItems = JSON.parse(localStorage.getItem('cart'));
-
-    // Create an object with form data and localStorage data
-    let postData = {
-        street: street,
-        postalCode: postalCode,
-        door: door,
-        floor: floor,
-        stairs: stairs,
-        name: name,
-        email: email,
-        telephone: telephoneNumber,
-        cart: cartItems
-    };
-    $.ajax({
-        url: 'apiCheckout',
-        type: 'POST',
-        contentType: 'application/json',
-        data: JSON.stringify(postData),
-        success: function(response){
-            console.log("Enviada la peticion al servidor");
-            clearCart();
-        },
-        error: function(xhr, status, error){
-            console.error("Error al enviar el dato: ", error);
-        }
-    });
-}
 function clearCart(){
     localStorage.setItem('cart', []);
     cartProducts = localStorage.getItem('cart');

@@ -11,10 +11,11 @@ import java.sql.*;
 import model.Order;
 public class OrderQuery {
     public int insertQuery(Order order, Connection stablishConnection) throws SQLException{
-        String SQLQuery = "INSERT INTO pedidos (fecha, idComprador) VALUES (?, ?)";
+        String SQLQuery = "INSERT INTO pedidos (fecha, idComprador, precioTotal) VALUES (?, ?, ?)";
         PreparedStatement st = stablishConnection.prepareStatement(SQLQuery, Statement.RETURN_GENERATED_KEYS);
         st.setDate(1, order.getDate());
         st.setInt(2, order.getIdPurchaser());
+        st.setFloat(3, order.getTotalPrice());
         int rowsInserted = st.executeUpdate();
         ResultSet id = st.getGeneratedKeys();
         int getId = 0;

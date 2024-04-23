@@ -12,13 +12,20 @@ import java.sql.Date;
 public class Order {
     private Date date;
     private int idPurchaser;
-
-    public Order(int idPurchaser){
+    private float totalPrice;
+    public Order(int idPurchaser, float totalPrice){
         this.date = new Date(System.currentTimeMillis());
         this.idPurchaser = idPurchaser;
+        this.totalPrice = totalPrice;
     }
     public Date getDate(){
         return this.date;
+    }
+    public float getTotalPrice(){
+        return this.totalPrice;
+    }
+    public void setTotalPrice(float totalPrice){
+        this.totalPrice = totalPrice;
     }
     public void setDate(){
         this.date = new Date(System.currentTimeMillis());
