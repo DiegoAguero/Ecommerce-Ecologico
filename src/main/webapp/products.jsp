@@ -12,6 +12,13 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Products</title>
         <link rel="stylesheet" href="./css/style.css" />
+    
+        <!--Pruebas para el carrito-->
+        <script src="https://kit.fontawesome.com/60f68411d6.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+
+        <!--Scroll-->
+        <script src="js/scroll.js"></script>
 
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <link rel="stylesheet" href="./scss/styles.css" />
@@ -43,32 +50,63 @@
                                 <button class="nav-link active" onclick="reloadCategory(4)">Bebidas y bodegas</button>
                             </li>
                         </ul>
+                    </div> 
+                    <!-- Carrito -->
+                    <div class="btn-group dropstart">
+                      <button type="button" style="width: 60px; height: 40px; border-radius: 30px;" class="btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-shopping-cart fa-xl text-dark"></i>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <!-- Dropdown -->
+                        <ul class="overflow-auto" style="height: 150px; padding-left: 10px; padding-right: 10px;">
+                          
+                          <il class="carritoil">  
+                            <p class="carritop">Nombre de producto</p>
+                            <button class="trashbut">
+                              <i class="fas fa-trash fa-lg text-dark text-center carritoi"></i>
+                            </button>
+                          </il>
+                        </ul>
+                        <il>
+                          <button style="margin-left:15px; margin-top: 10px; width: 90%;">Finalizar la compra</button>
+                        </il>
+                      </ul>
                     </div>
-                    <a class="navbar-brand" href="carrito.html">
-                    <img id="cart" src="./images/carrito.png" alt="Bootstrap" width="30" height="24" />
-                    </a>
                 </div>
             </nav>
         </header>
-        <ul id="products" class="d-flex flex-row list-group-horizontal position-relative overflow-auto fullWidth mt-4"
-        style="list-style: none; scrollbar-width: none">
-            <c:forEach var="product" items="${allProds}">
-                <li class="productList" id=${product.id}>
-                    <div class="card h-100" style="width: 18rem;">
-                    <img src="${product.image_url}" class="card-img-top cardImg" alt="Producto">
-                    <div class="card-body">
-                        <h5 class="card-title text-center">${product.name}</h5>
-                        <p class="card-text text-center">€${product.price}</p>
-                    </div>
-                    <div class="card-body contenedor">
-                        <button onclick="addProductToCart(${product.id})">Añadir a la cesta</button>
-                    </div>
-                    </div>
-                </li>
-            </c:forEach>
-        </ul>
-        <script src="./js/ajaxProducts.js"></script>
-        <script src="js/cart.js"></script>
+       
+        <main>
+          <button class="left" onclick="leftScroll()">
+            <i class="fas fa-angle-double-left"></i>
+          </button>
+          <ul id="products" class="list-group list-group-horizontal position-relative overflow-auto fullWidth"
+          style="list-style: none; scrollbar-width: none;">
+              <c:forEach var="product" items="${allProds}">
+                  <li class="productList" id=${product.id}>
+                      <div class="card h-100" style="width: 18rem;">
+                      <img src="${product.image_url}" class="card-img-top cardImg" alt="Producto">
+                      <div class="card-body">
+                          <h5 class="card-title text-center">${product.name}</h5>
+                          <p class="card-text text-center">€${product.price}</p>
+                      </div>
+                      <div class="card-body contenedor">
+                          <button onclick="addProductToCart(${product.id})">Añadir a la cesta</button>
+                      </div>
+                      </div>
+                  </li>
+              </c:forEach>
+          </ul>
+  
+          
+      
+          <button class="right" onclick="rightScroll()">
+            <i class="fas fa-angle-double-right"></i>
+          </button>
+          <script src="./js/ajaxProducts.js"></script>
+          <script src="js/cart.js"></script>
+        </main>
+       
         <footer class="text-center text-lg-start text-white"
         style="background: linear-gradient(rgb(60, 190, 76), 80%, rgb(7,122,21)); ">
         <!-- Grid container -->
