@@ -6,9 +6,28 @@
     display: inline;
 }
 
+.navLogo
+{
+    left: 0; 
+    position: absolute; 
+    top: 0;
+}
+
+.navCarrito
+{
+    right: 0; 
+    position: absolute;  
+    top: 10px;
+}
+
+.container-fluid
+{
+    justify-content: center;
+}
+
 #logo{
-    width: 55px;
-    height: 55px;
+    width: 45px;
+    height: 45px;
 }
 
 #cart{
