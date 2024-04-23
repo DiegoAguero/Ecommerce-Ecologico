@@ -6,7 +6,12 @@
     <title>Green Essentials | Conocenos</title>
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./scss/styles.css" />
-   
+     
+    <!--Pruebas para el carrito-->
+    <script src="https://kit.fontawesome.com/60f68411d6.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
   </head>
   <body>
@@ -22,25 +27,35 @@
           <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
             <ul class="navbar-nav nav justify-content-center">
               <li class="nav-item navli">
-                <a class="nav-link active" href="#">Frutas y verduras</a>
-              </li>
-              <li class="nav-item navli">
-                <a class="nav-link active" href="#">Frescos</a>
-              </li>
-              <li class="nav-item navli">
-                <a class="nav-link active" href="#">Dulces y desayunos</a>
-              </li>
-              <li class="nav-item navli">
-                <a class="nav-link active" href="#">Bebidas y bodegas</a>
+                <a class="nav-link active" href="/Ecommerce-Ecologico/products">Nuestros productos!</a>
               </li>
             </ul>
           </div>
-          <a class="navbar-brand" href="carrito.html">
-            <img id="cart" src="./images/carrito.png" alt="Bootstrap" width="30" height="24" />
-          </a>
-        </div>
-      </nav>
-    </header>
+
+          <!-- Carrito -->
+          <div class="btn-group dropstart">
+            <button type="button" style="width: 60px; height: 40px; border-radius: 30px;" class="btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-shopping-cart fa-xl text-dark"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <!-- Dropdown -->
+              <ul class="overflow-auto" style="height: 150px; padding-left: 10px;">
+                  <il class="overflow-auto carritoil">  
+                    <p class="carritop">Nombre de producto</p>
+                    <button class="trashbut">
+                      <i class="fas fa-trash fa-lg text-dark text-center carritoi"></i>
+                    </button>
+                  </il>
+              </ul>
+              <il>
+                <button style="margin-left:15px; margin-top: 10px; width: 90%;">Finalizar la compra</button>
+              </il>
+            </ul>
+          </div>
+          </div>
+      </div>
+    </nav>
+  </header>
     <main class="tableText">
       <div class="text-center card" style="margin-bottom: 30px;">
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, fugit recusandae. Eveniet doloremque, odit nemo esse ab dolore veritatis. Distinctio animi nesciunt repellat voluptatem excepturi fuga numquam consequuntur, beatae reprehenderit.
