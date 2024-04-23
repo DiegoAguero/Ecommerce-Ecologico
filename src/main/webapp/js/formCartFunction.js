@@ -1,4 +1,5 @@
-
+// import Swal from "../node_modules/sweetalert2/dist/sweetalert2.js";
+import {fire} from "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js";
 document.addEventListener("DOMContentLoaded", ()=>{
     let form = document.getElementById("form");
     form.addEventListener('submit', handleForm);
@@ -36,13 +37,12 @@ function handleForm(event){
         contentType: 'application/json',
         data: JSON.stringify(postData),
         success: function(response){
-            Swal.fire({
+            fire({
                 title: "¡Hecho!",
                 text: "¡Su compra ha sido confirmada con éxito!",
                 icon: response.status,
                 confirmButtonText: "¡Okay!"
             })
-            // console.log("Enviada la peticion al servidor");
             clearCart();
         },
         error: function(xhr, status, error){

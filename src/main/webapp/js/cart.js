@@ -2,7 +2,6 @@ var cartProducts = [];
 document.addEventListener("DOMContentLoaded", ()=>{
     cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
     cartLoad();
-
 })
 function addProductToCart(id){
     $.ajax({
@@ -46,7 +45,6 @@ function showCart(){
     let totalProdPill = document.getElementById("totalProdsInCart");
     getUlById.innerHTML = "";
     let totalPrice = 0;
-    // let totalPriceHTML = document.getElementById("totalPrice");
     cartProducts.map(prods=>{
         let listItem = 
         `

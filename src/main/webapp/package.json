@@ -5,13 +5,13 @@
   },
   "name": "greenessentials",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.html",
   "devDependencies": {},
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Diego Aguero, David Emiliano Cardenaz & David Vazquez",
   "license": "ISC",
   "description": ""
 }
