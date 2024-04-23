@@ -107,15 +107,14 @@ function handleForm(event){
         data: JSON.stringify(postData),
         success: function(response){
             console.log("Enviada la peticion al servidor");
+            clearCart();
         },
         error: function(xhr, status, error){
             console.error("Error al enviar el dato: ", error);
         }
-
     });
 }
-// function checkout(){
-
-// }
-// let form = document.getElementById("form");
-// form.addEventListener('submit', handleForm);
+function clearCart(){
+    localStorage.setItem('cart', []);
+    cartProducts = localStorage.getItem('cart');
+}

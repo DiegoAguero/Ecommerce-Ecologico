@@ -14,7 +14,7 @@ import model.Purchaser;
 public class PurchaserQuery {
     public int insertPurchaser(Purchaser purchaser, Connection stablishConnection) throws SQLException{
         String SQLQuery = "INSERT INTO compradores (nombre, idDireccion, telefono, email) VALUES (?, ?, ?, ?)";
-        PreparedStatement st = stablishConnection.prepareStatement(SQLQuery);
+        PreparedStatement st = stablishConnection.prepareStatement(SQLQuery, Statement.RETURN_GENERATED_KEYS);
         st.setString(1, purchaser.getName());
         st.setInt(2, purchaser.getIdDirection());
         st.setString(3, purchaser.getTelephone_number());
@@ -28,6 +28,7 @@ public class PurchaserQuery {
         if(rowsInserted == 0){
             throw new Error("Error inserting an Purchaser...");
         }
+        id.close();
         return getId;
     }
 }

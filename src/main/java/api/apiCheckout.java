@@ -14,6 +14,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.xml.soap.Detail;
 import db.Detail_OrderQuery;
 import model.Detail_Order;
 import db.Connect;
@@ -22,7 +23,6 @@ import model.Order;
 import db.PurchaserQuery;
 import model.Purchaser;
 import model.Direction;
-import model.FormData;
 import db.DirectionQuery;
 import java.sql.*;
 import com.google.gson.*;
@@ -44,7 +44,7 @@ public class apiCheckout extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/json;charset=UTF-8");
 
     }
 
@@ -78,34 +78,43 @@ public class apiCheckout extends HttpServlet {
         BufferedReader reader = request.getReader();
         StringBuilder requestBody = new StringBuilder();
         String line;
+//        System.out.println(reader);
         while((line = reader.readLine()) != null){
             requestBody.append(line);
         }
         Gson gson = new Gson();
-        FormData data = gson.fromJson(requestBody.toString(), FormData.class);
+        JsonObject jsonObject = gson.fromJson(requestBody.toString(), JsonObject.class);
+        JsonArray cartArray = jsonObject.getAsJsonArray("cart");
+        System.out.println(cartArray);
         DirectionQuery directionQuery = new DirectionQuery();
         PurchaserQuery purchaserQuery = new PurchaserQuery();
         OrderQuery orderQuery = new OrderQuery();
-        System.out.println(data);
-        // try {
-            // Connection connect = Connect.getConnection();
-            // //Create direction and get idDirection
-            // String street = request.getParameter("street");
-            // String postalCode = request.getParameter("postalCode");
-            // byte door = Byte.valueOf(request.getParameter("door"));
-            // byte floor = Byte.valueOf(request.getParameter("floor"));
-            // String stairs = request.getParameter("stairs");
-            // int idDirection = directionQuery.insertDirection(new Direction(street, postalCode, door, floor, stairs), connect);
-            // //Create purchaser and get idPurchaser
-            // String name = request.getParameter("name");
-            // String email = request.getParameter("email");
-            // String telephoneNumber = request.getParameter("telephone");
-            // int idPurchaser = purchaserQuery.insertPurchaser(new Purchaser(name, idDirection, telephoneNumber, email), connect);
-            // int idOrder = orderQuery.insertQuery(new Order(idPurchaser), connect);
-            
-        // } catch (SQLException e) {
-        //     e.printStackTrace();
-        // }
+        Detail_OrderQuery detail_OrderQuery = new Detail_OrderQuery();
+        try {
+            Connection connect = Connect.getConnection();
+            //Create direction and get idDirection
+            String street = jsonObject.get("street").getAsString();
+            String postalCode = jsonObject.get("postalCode").getAsString();
+            byte door = jsonObject.get("door").getAsByte();
+            byte floor = jsonObject.get("door").getAsByte();
+            String stairs = jsonObject.get("stairs").getAsString();
+            int idDirection = directionQuery.insertDirection(new Direction(street, postalCode, door, floor, stairs), connect);
+            //Create purchaser and get idPurchaser
+            String name = jsonObject.get("name").getAsString();
+            String email = jsonObject.get("email").getAsString();
+            String telephoneNumber = jsonObject.get("telephone").getAsString();
+            int idPurchaser = purchaserQuery.insertPurchaser(new Purchaser(name, idDirection, telephoneNumber, email), connect);
+            int idOrder = orderQuery.insertQuery(new Order(idPurchaser), connect);
+            //Create and set the idOrder, idProduct and quantity to Detail_Order
+            for (int i = 0; i < cartArray.size(); i++) {
+                JsonObject item = cartArray.get(i).getAsJsonObject();
+                int idProduct = item.get("id").getAsInt();
+                int productQuantity = item.get("quantity").getAsInt();
+                detail_OrderQuery.insertDetail_Order(new Detail_Order(idOrder, idProduct, productQuantity), connect);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
