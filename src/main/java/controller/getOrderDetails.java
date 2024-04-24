@@ -6,11 +6,14 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.*;
 import java.sql.*;
 import db.Detail_OrderQuery;
 import db.Connect;
@@ -50,11 +53,15 @@ public class getOrderDetails extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         Detail_OrderQuery detail_OrderQuery = new Detail_OrderQuery();
-        PurchaseDetails purchaseDetails;
+        RequestDispatcher rd = request.getRequestDispatcher("");
         try {
+            Connection connect = Connect.getConnection();
             int idOrder = Integer.parseInt(request.getParameter("idOrder"));
-        } catch (Exception e) {
-            // TODO: handle exception
+            ArrayList<PurchaseDetails> purchaseDetails = detail_OrderQuery.showPurchaseDetails(idOrder, connect);
+            request.setAttribute("purchaseDetails", purchaseDetails);
+            rd.forward(request, response);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
     }

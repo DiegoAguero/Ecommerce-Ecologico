@@ -60,7 +60,7 @@ public class products extends HttpServlet {
             ArrayList<Product> productList = productQuery.getAllProducts(connect);
             request.setAttribute("allProds", productList);
             rd.forward(request, response);
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

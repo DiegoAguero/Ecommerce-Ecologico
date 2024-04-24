@@ -9,15 +9,29 @@ package model;
  * @author Mati
  */
 public class PurchaseDetails {
+    private int idOrder;
     private int quantity;
     private String nameProduct;
     private float priceProduct;
-    public PurchaseDetails(int quantity, String nameProduct, float priceProduct){
+    private String image_url;
+    private float totalPrice;
+    public PurchaseDetails(int idOrder, int quantity, String nameProduct, float priceProduct, String image_url, float totalPrice){
+        this.idOrder = idOrder;
         this.quantity = quantity;
         this.nameProduct = nameProduct;
         this.priceProduct = priceProduct;
+        this.image_url = image_url;
+        this.totalPrice = totalPrice;
     }
-
+    public void setIdOrder(int idOrder){
+        this.idOrder = idOrder;
+    }
+    public void setImage_Url(String image_url){
+        this.image_url = image_url;
+    }
+    public void setTotalPrice(float totalPrice){
+        this.totalPrice = totalPrice;
+    }
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
@@ -40,6 +54,15 @@ public class PurchaseDetails {
 
     public float getPriceProduct() {
         return priceProduct;
+    }
+    public float getTotalPrice(){
+        return this.totalPrice;
+    }
+    public String getImage_Url(){
+        return this.image_url;
+    }
+    public int getIdOrder(){
+        return this.idOrder;
     }
     
 }

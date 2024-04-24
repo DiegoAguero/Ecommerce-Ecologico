@@ -25,16 +25,19 @@ public class Detail_OrderQuery {
         }
         return rowsInserted;
     }
-    public ArrayList<PurchaseDetails> showPurchaseDetails(Connection stablishConnection) throws SQLException{
-        String SQLQuery = "SELECT dp.cantidad, p.nombre, p.precio FROM detalles_pedidos dp JOIN productos p ON dp.idProducto = p.id";
+    public ArrayList<PurchaseDetails> showPurchaseDetails(int idOrder, Connection stablishConnection) throws SQLException{
+        String SQLQuery = "SELECT ped.id, dp.cantidad, prod.nombre, prod.imagen_url, ped.precioTotal FROM pedidos ped JOIN detalles_pedidos dp ON ped.id = dp.idPedido JOIN productos prod ON dp.idProducto = prod.id WHERE ped.id = " + idOrder;
         Statement st = stablishConnection.createStatement();
         ResultSet rs = st.executeQuery(SQLQuery);
         ArrayList<PurchaseDetails> details = new ArrayList<>();
         if(rs.next()){
+            int orderId = rs.getInt("id");
             int quantity = rs.getInt("cantidad");
             String nameOfProduct = rs.getString("nombre");
             float priceOfProduct = rs.getFloat("precio");
-            details.add(new PurchaseDetails(quantity, nameOfProduct, priceOfProduct));
+            String image_url = rs.getString("imagen_url");
+            float totalPrice = rs.getFloat("precioTotal");
+            details.add(new PurchaseDetails(orderId, quantity, nameOfProduct, priceOfProduct, image_url, totalPrice));
         }
         return details;
     }
