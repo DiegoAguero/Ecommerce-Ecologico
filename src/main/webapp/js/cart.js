@@ -61,7 +61,6 @@ function showCart(){
         getUlById.insertAdjacentHTML('beforeend', listItem);
     })
     totalProdPill.innerHTML = `${cartProducts.length}`;
-    // totalPriceHTML.innerHTML = `€${totalPrice}`
     let totalPriceHTML = `
         <li class="list-group-item d-flex justify-content-between">
             <span>Total: (EUR)</span>
@@ -74,4 +73,8 @@ function showCart(){
 function clearCart(){
     localStorage.setItem('cart', []);
     cartProducts = localStorage.getItem('cart');
+}
+
+function showDropdownCart(){
+    
 }

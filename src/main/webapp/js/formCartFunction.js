@@ -1,5 +1,4 @@
 // import Swal from "../node_modules/sweetalert2/dist/sweetalert2.js";
-import {fire} from "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js";
 document.addEventListener("DOMContentLoaded", ()=>{
     let form = document.getElementById("form");
     form.addEventListener('submit', handleForm);
