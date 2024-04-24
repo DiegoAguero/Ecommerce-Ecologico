@@ -27,11 +27,12 @@ function addProductToCart(id){
 function removeFromCart(productId){
     cartProducts.map(prod=>{
         if(prod.id === productId){
-            if(prod.cantidad === 1){
+            if(prod.quantity === 1){
                 cartProducts = cartProducts.filter(product => product.id !== productId);
             }
-            prod.cantidad--;
+            prod.quantity--;
             cartLoad();
+            showDropdownCart();
         }
     });
     
@@ -76,5 +77,18 @@ function clearCart(){
 }
 
 function showDropdownCart(){
-    
+    let ulDropdown = document.getElementById("dropdownCart");
+    ulDropdown.innerHTML = "";
+    cartProducts.map(prods=>{
+        let listItem = 
+            `
+            <li class="carritoil">  
+                <p class="carritop">${prods.name}</p> <span> Cantidad: ${prods.quantity}</span>
+                <button class="trashbut" onclick="removeFromCart(${prods.id})">
+                    <i class="fas fa-trash fa-lg text-dark text-center carritoi"></i>
+                </button>
+            </li>
+            `
+        ulDropdown.insertAdjacentHTML('beforeend', listItem);
+    })
 }
