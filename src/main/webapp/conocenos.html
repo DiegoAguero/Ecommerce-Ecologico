@@ -18,8 +18,8 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg bg-body-tertiary, head">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index.html"><img id="logo" src="./images/simbolo.png"
+        <div class="container-fluid" style="justify-content: center;">
+          <a class="navbar-brand navLogo" href="index.html"><img id="logo" src="./images/simbolo.png"
               alt="Logo GreenEssentials" /></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,25 +34,27 @@
           </div>
 
           <!-- Carrito -->
-          <div class="btn-group dropstart">
+          <div class="btn-group dropstart navCarrito" style="position: absolute;">
             <button type="button" style="width: 60px; height: 40px; border-radius: 30px;" class="btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fas fa-shopping-cart fa-xl text-dark"></i>
             </button>
             <ul class="dropdown-menu">
               <!-- Dropdown -->
-              <ul class="overflow-auto" style="height: 150px; padding-left: 10px;">
-                  <il class="overflow-auto carritoil">  
-                    <p class="carritop">Nombre de producto</p>
-                    <button class="trashbut">
-                      <i class="fas fa-trash fa-lg text-dark text-center carritoi"></i>
-                    </button>
-                  </il>
+              <ul class="overflow-auto" style="height: 150px; padding-left: 10px; padding-right: 10px;">
+                 
+                <il class="carritoil">  
+                  <p class="carritop">Nombre de producto</p>
+                  <button class="trashbut">
+                    <i class="fas fa-trash fa-lg text-dark text-center carritoi"></i>
+                  </button>
+                </il>
               </ul>
               <il>
                 <button style="margin-left:15px; margin-top: 10px; width: 90%;">Finalizar la compra</button>
               </il>
             </ul>
           </div>
+
           </div>
       </div>
     </nav>

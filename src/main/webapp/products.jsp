@@ -28,8 +28,8 @@
     <body>
         <header>
             <nav class="navbar navbar-expand-lg bg-body-tertiary head">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="index.html"><img id="logo" src="./images/simbolo.png"
+                <div class="container-fluid" style="justify-content: center;">
+                    <a class="navbar-brand navLogo" href="index.html"><img id="logo" src="./images/simbolo.png"
                         alt="Logo GreenEssentials" /></a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +52,7 @@
                         </ul>
                     </div> 
                     <!-- Carrito -->
-                    <div class="btn-group dropstart">
+                      <div class="btn-group dropstart navCarrito" style="position: absolute;">
                       <button type="button" style="width: 60px; height: 40px; border-radius: 30px;" class="btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-shopping-cart fa-xl text-dark"></i>
                       </button>
