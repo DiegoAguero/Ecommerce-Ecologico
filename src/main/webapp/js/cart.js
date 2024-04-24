@@ -25,6 +25,7 @@ function addProductToCart(id){
 }
 
 function removeFromCart(productId){
+    
     cartProducts.map(prod=>{
         if(prod.id === productId){
             if(prod.quantity === 1){
@@ -34,9 +35,20 @@ function removeFromCart(productId){
             cartLoad();
             showDropdownCart();
         }
+        
+        $("ul.dropdown-menu").on("click", function(e) {
+            e.stopPropagation();
+        });
+        
     });
     
 }
+
+
+$(document).delegate("ul.dropdown-menu [data-keepOpenOnClick]", "click", function(e) {
+    e.stopPropagation();
+});
+
 function cartLoad(){
     localStorage.setItem('cart', JSON.stringify(cartProducts));
 }
@@ -76,19 +88,33 @@ function clearCart(){
     cartProducts = localStorage.getItem('cart');
 }
 
+
+function keepOpenOnClick() {
+    $("ul.trashbut").on("click", function(e) {
+        e.stopPropagation();
+    });
+};
+
+$(function() {
+    $("ul.dropdown-menu").on("click", "[data-keepOpenOnClick]", function(e) {
+        e.stopPropagation();
+    });
+});
+
 function showDropdownCart(){
     let ulDropdown = document.getElementById("dropdownCart");
     ulDropdown.innerHTML = "";
     cartProducts.map(prods=>{
         let listItem = 
             `
-            <li class="carritoil">  
-                <p class="carritop">${prods.name}</p> <span> Cantidad: ${prods.quantity}</span>
-                <button class="trashbut" onclick="removeFromCart(${prods.id})">
-                    <i class="fas fa-trash fa-lg text-dark text-center carritoi"></i>
+            <li class="overflow-auto carritoil" data-keepOpenOnClick>  
+                <p class="overflow-auto carritop">${prods.name}</p> <span> Cantidad: ${prods.quantity}</span>
+                <button data-keepOpenOnClick class="trashbut" onclick="removeFromCart(${prods.id}) ">
+                    <i class="fas fa-trash fa-lg text-dark text-center carritoi" data-keepOpenOnClick></i>
                 </button>
             </li>
             `
         ulDropdown.insertAdjacentHTML('beforeend', listItem);
+        
     })
 }
