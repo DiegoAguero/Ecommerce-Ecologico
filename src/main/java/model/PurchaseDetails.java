@@ -26,7 +26,7 @@ public class PurchaseDetails {
     public void setIdOrder(int idOrder){
         this.idOrder = idOrder;
     }
-    public void setImage_Url(String image_url){
+    public void setImageUrl(String image_url){
         this.image_url = image_url;
     }
     public void setTotalPrice(float totalPrice){
@@ -58,7 +58,7 @@ public class PurchaseDetails {
     public float getTotalPrice(){
         return this.totalPrice;
     }
-    public String getImage_Url(){
+    public String getImageUrl(){
         return this.image_url;
     }
     public int getIdOrder(){

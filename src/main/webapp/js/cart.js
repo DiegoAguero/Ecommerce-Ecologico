@@ -72,8 +72,8 @@ function showCart(){
 }
 
 function clearCart(){
-    localStorage.setItem('cart', []);
-    cartProducts = localStorage.getItem('cart');
+    cartProducts = [];
+    cartLoad();
 }
 
 function showDropdownCart(){

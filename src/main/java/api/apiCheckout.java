@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.xml.soap.Detail;
+import java.util.*;
 import db.Detail_OrderQuery;
 import model.Detail_Order;
 import db.Connect;
@@ -26,6 +27,8 @@ import model.Direction;
 import db.DirectionQuery;
 import java.sql.*;
 import com.google.gson.*;
+import db.ProductQuery;
+import model.Product;
 /**
  *
  * @author Mati
@@ -85,35 +88,69 @@ public class apiCheckout extends HttpServlet {
         Gson gson = new Gson();
         JsonObject jsonObject = gson.fromJson(requestBody.toString(), JsonObject.class);
         JsonArray cartArray = jsonObject.getAsJsonArray("cart");
-        System.out.println(cartArray);
         DirectionQuery directionQuery = new DirectionQuery();
         PurchaserQuery purchaserQuery = new PurchaserQuery();
         OrderQuery orderQuery = new OrderQuery();
         Detail_OrderQuery detail_OrderQuery = new Detail_OrderQuery();
+        ProductQuery productQuery = new ProductQuery();
+        ArrayList<Product> productWithoutStock = new ArrayList<Product>();
         try {
+            boolean isStockEnough = true;
             Connection connect = Connect.getConnection();
-            //Create direction and get idDirection
-            String street = jsonObject.get("street").getAsString();
-            String postalCode = jsonObject.get("postalCode").getAsString();
-            byte door = jsonObject.get("door").getAsByte();
-            byte floor = jsonObject.get("door").getAsByte();
-            String stairs = jsonObject.get("stairs").getAsString();
-            int idDirection = directionQuery.insertDirection(new Direction(street, postalCode, door, floor, stairs), connect);
-            //Create purchaser and get idPurchaser
-            String name = jsonObject.get("name").getAsString();
-            String email = jsonObject.get("email").getAsString();
-            String telephoneNumber = jsonObject.get("telephone").getAsString();
-            int idPurchaser = purchaserQuery.insertPurchaser(new Purchaser(name, idDirection, telephoneNumber, email), connect);
-            float totalPrice = jsonObject.get("totalPrice").getAsFloat();
-            int idOrder = orderQuery.insertQuery(new Order(idPurchaser, totalPrice), connect);
-            //Create and set the idOrder, idProduct and quantity to Detail_Order
+            //Check stock before buying
             for (int i = 0; i < cartArray.size(); i++) {
                 JsonObject item = cartArray.get(i).getAsJsonObject();
                 int idProduct = item.get("id").getAsInt();
                 int productQuantity = item.get("quantity").getAsInt();
-                detail_OrderQuery.insertDetail_Order(new Detail_Order(idOrder, idProduct, productQuantity), connect);
+                Product productToUpdate = productQuery.getProductById(idProduct, connect);
+                if(productToUpdate.getStock() < productQuantity){
+                    Product prod = productQuery.getProductById(idProduct, connect);
+                    // Product product = new Product(prod.getId(), prod.getName(), prod.getDescription(), prod.getPrice(), prod.getStock(), prod.getIdCategory(), prod.getImage_url());
+                    productWithoutStock.add(prod);
+                    isStockEnough = false;
+                }
             }
-            response.getWriter().write("{status: 'success'}");
+            if(isStockEnough == true){
+                //Create direction and get idDirection
+                String street = jsonObject.get("street").getAsString();
+                String postalCode = jsonObject.get("postalCode").getAsString();
+                byte door = jsonObject.get("door").getAsByte();
+                byte floor = jsonObject.get("floor").getAsByte();
+                String stairs = jsonObject.get("stairs").getAsString();
+                int idDirection = directionQuery.insertDirection(new Direction(street, postalCode, door, floor, stairs), connect);
+                //Create purchaser and get idPurchaser
+                String name = jsonObject.get("name").getAsString();
+                String email = jsonObject.get("email").getAsString();
+                String telephoneNumber = jsonObject.get("telephone").getAsString();
+                int idPurchaser = purchaserQuery.insertPurchaser(new Purchaser(name, idDirection, telephoneNumber, email), connect);
+                float totalPrice = jsonObject.get("totalPrice").getAsFloat();
+                int idOrder = orderQuery.insertQuery(new Order(idPurchaser, totalPrice), connect);
+                //Create and set the idOrder, idProduct and quantity to Detail_Order
+                for (int i = 0; i < cartArray.size(); i++) {
+                    JsonObject item = cartArray.get(i).getAsJsonObject();
+                    int idProduct = item.get("id").getAsInt();
+                    int productQuantity = item.get("quantity").getAsInt();
+                    detail_OrderQuery.insertDetail_Order(new Detail_Order(idOrder, idProduct, productQuantity), connect);
+                    Product productToUpdate = productQuery.getProductById(idProduct, connect);
+                    int newStock = productToUpdate.getStock() - productQuantity; 
+                    productToUpdate.setStock(newStock);
+                    productQuery.updateProduct(productToUpdate, connect);
+                }
+                response.getWriter().write("{status: 'success'}");
+            }else{
+                JsonObject jsonResponse = new JsonObject();
+                jsonResponse.addProperty("status", "error");
+                JsonArray errorProducts = new JsonArray();
+                for(Product product : productWithoutStock){
+                    JsonObject errorProduct = new JsonObject();
+                    errorProduct.addProperty("name", product.getName());
+                    errorProduct.addProperty("error", "not enough stock for: " + product.getName());
+                    errorProducts.add(errorProduct);    
+                }
+                jsonResponse.add("products", errorProducts);
+                System.out.println(jsonResponse);
+                response.getWriter().write(jsonResponse.toString()); 
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

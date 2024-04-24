@@ -53,13 +53,15 @@ public class getOrderDetails extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         Detail_OrderQuery detail_OrderQuery = new Detail_OrderQuery();
-        RequestDispatcher rd = request.getRequestDispatcher("");
+        RequestDispatcher rd = request.getRequestDispatcher("purchaseDetails.jsp");
         try {
             Connection connect = Connect.getConnection();
             int idOrder = Integer.parseInt(request.getParameter("idOrder"));
             ArrayList<PurchaseDetails> purchaseDetails = detail_OrderQuery.showPurchaseDetails(idOrder, connect);
             request.setAttribute("purchaseDetails", purchaseDetails);
+            response.getWriter().write("{status: 'success'}");
             rd.forward(request, response);
+            response.sendRedirect("purchaseDetails.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
         }

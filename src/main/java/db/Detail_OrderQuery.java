@@ -26,10 +26,12 @@ public class Detail_OrderQuery {
         return rowsInserted;
     }
     public ArrayList<PurchaseDetails> showPurchaseDetails(int idOrder, Connection stablishConnection) throws SQLException{
-        String SQLQuery = "SELECT ped.id, dp.cantidad, prod.nombre, prod.imagen_url, ped.precioTotal FROM pedidos ped JOIN detalles_pedidos dp ON ped.id = dp.idPedido JOIN productos prod ON dp.idProducto = prod.id WHERE ped.id = " + idOrder;
-        Statement st = stablishConnection.createStatement();
-        ResultSet rs = st.executeQuery(SQLQuery);
-        ArrayList<PurchaseDetails> details = new ArrayList<>();
+        String SQLQuery = "SELECT ped.id, dp.cantidad, prod.nombre, prod.precio, prod.imagen_url, ped.precioTotal FROM pedidos ped JOIN detalles_pedidos dp ON ped.id = dp.idPedido JOIN productos prod ON dp.idProducto = prod.id WHERE ped.id = ?";
+        PreparedStatement st = stablishConnection.prepareStatement(SQLQuery);
+        st.setInt(1, idOrder);
+        ResultSet rs = st.executeQuery();
+
+        ArrayList<PurchaseDetails> details = new ArrayList<PurchaseDetails>();
         if(rs.next()){
             int orderId = rs.getInt("id");
             int quantity = rs.getInt("cantidad");

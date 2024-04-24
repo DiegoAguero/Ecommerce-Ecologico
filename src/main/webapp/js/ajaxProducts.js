@@ -39,3 +39,16 @@ function reloadCategory(id){
         }
     });
 }
+function getOrderDetails(idOrder){
+    $.ajax({
+       url: `getOrderDetails?idOrder=${idOrder}`,
+       type: 'GET',
+       dataType: 'json',
+       success: function(response){
+            console.log("enviado");
+       },
+       error: function(xhr, status, error){
+            console.error(status);
+       }
+    });
+}

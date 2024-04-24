@@ -75,17 +75,18 @@
         <main>
           <ul id="products" class="list-group list-group-vertical position-relative overflow-auto fullWidth"
           style="list-style: none; scrollbar-width: none;">
-              <c:forEach var="product" items="${allProds}">
-                  <li class="productList" id=${product.id}>
+              <c:forEach var="product" items="${purchaseDetails}">
+                  <li class="productList">
                       <div class="card h-100" style="width: 18rem;">
                       <img src="${product.image_url}" class="card-img-top cardImg" alt="Producto">
                       <div class="card-body">
-                          <h5 class="card-title text-center">${product.name}</h5>
-                          <p class="card-text text-center">€${product.price}</p>
+                          <h5 class="card-title text-center">${product.nameProduct}</h5>
+                          <p class="card-text text-center">€${product.priceProduct}</p>
+                          <p class="card-text text-center">€${product.quantity}</p>
                       </div>
-                      <div class="card-body contenedor">
+                      <!-- <div class="card-body contenedor">
                           <button onclick="addProductToCart(${product.id})">Añadir a la cesta</button>
-                      </div>
+                      </div> -->
                       </div>
                   </li>
               </c:forEach>

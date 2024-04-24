@@ -81,5 +81,15 @@ public class ProductQuery {
         }
         return product;
     }
+    public void updateProduct(Product product, Connection stablishConnection) throws SQLException{
+        String SQLQuery = "UPDATE productos SET stock = ? WHERE id = ?";
+        PreparedStatement st = stablishConnection.prepareStatement(SQLQuery);
+        st.setInt(1, product.getStock());
+        st.setInt(2, product.getId());
+        int rowsUpdated = st.executeUpdate();
+        if(rowsUpdated == 0){
+            throw new Error("Error while updating the product");
+        }
+    }
 
 }

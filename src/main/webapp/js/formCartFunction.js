@@ -36,12 +36,12 @@ function handleForm(event){
         contentType: 'application/json',
         data: JSON.stringify(postData),
         success: function(response){
-            fire({
-                title: "¡Hecho!",
-                text: "¡Su compra ha sido confirmada con éxito!",
-                icon: response.status,
-                confirmButtonText: "¡Okay!"
-            })
+            if(response.status === "error"){
+                $.each(response.products, function(index, product){
+                    $('#errorMessage').text(product.error);
+                    $('#showModal').modal('show');
+                })
+            }
             clearCart();
         },
         error: function(xhr, status, error){
