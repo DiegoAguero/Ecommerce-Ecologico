@@ -35,13 +35,20 @@ function removeFromCart(productId){
             cartLoad();
             showDropdownCart();
         }
-    
-        $("ul.trashbut").on("click", function(e) {
+        
+        $("ul.dropdown-menu").on("click", function(e) {
             e.stopPropagation();
         });
+        
     });
     
 }
+
+
+$(document).delegate("ul.dropdown-menu [data-keepOpenOnClick]", "click", function(e) {
+    e.stopPropagation();
+});
+
 function cartLoad(){
     localStorage.setItem('cart', JSON.stringify(cartProducts));
 }
@@ -82,6 +89,12 @@ function clearCart(){
 }
 
 
+function keepOpenOnClick() {
+    $("ul.trashbut").on("click", function(e) {
+        e.stopPropagation();
+    });
+};
+
 $(function() {
     $("ul.dropdown-menu").on("click", "[data-keepOpenOnClick]", function(e) {
         e.stopPropagation();
@@ -96,11 +109,12 @@ function showDropdownCart(){
             `
             <li class="overflow-auto carritoil" data-keepOpenOnClick>  
                 <p class="overflow-auto carritop">${prods.name}</p> <span> Cantidad: ${prods.quantity}</span>
-                <button class="trashbut" onclick="removeFromCart(${prods.id})">
-                    <i class="fas fa-trash fa-lg text-dark text-center carritoi"></i>
+                <button data-keepOpenOnClick class="trashbut" onclick="removeFromCart(${prods.id}) ">
+                    <i class="fas fa-trash fa-lg text-dark text-center carritoi" data-keepOpenOnClick></i>
                 </button>
             </li>
             `
         ulDropdown.insertAdjacentHTML('beforeend', listItem);
+        
     })
 }

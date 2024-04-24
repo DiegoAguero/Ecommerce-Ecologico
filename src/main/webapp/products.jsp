@@ -77,7 +77,7 @@
         </header>
        
         <main>
-          <button class="left" onclick="leftScroll()">
+          <button class="left">
             <i class="fas fa-angle-double-left"></i>
           </button>
           <ul id="products" class="list-group list-group-horizontal position-relative overflow-auto fullWidth"
@@ -100,7 +100,7 @@
   
           
       
-          <button class="right" onclick="rightScroll()">
+          <button class="right">
             <i class="fas fa-angle-double-right"></i>
           </button>
           <script src="./js/ajaxProducts.js"></script>
