@@ -12,7 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 
     <!--Scroll-->
-    <script src="js/scroll.js"></script>
+    <script src="./js/scroll.js"></script>
     <script src="./js/cart.js"></script>
     <link rel="stylesheet" href="./scss/styles.css" />
     <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
@@ -41,9 +41,9 @@
             <button type="button" style="width: 60px; height: 40px; border-radius: 30px;" class="btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" onclick="showDropdownCart()">
               <i class="fas fa-shopping-cart fa-xl text-dark"></i>
             </button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" data-keepOpenOnClick>
               <!-- Dropdown -->
-              <ul class="overflow-auto" id="dropdownCart" style="height: 150px; padding-left: 10px; padding-right: 10px;">
+              <ul class="overflow-auto" data-keepOpenOnClick id="dropdownCart" style="height: 150px; width:40vw; padding-left: 10px; padding-right: 10px;" data-keepOpenOnClick>
                  
                 <il class="carritoil">  
                   <p class="carritop">Nombre de producto</p>
@@ -52,7 +52,7 @@
                   </button>
                 </il>
               </ul>
-              <li>
+              <li data-keepOpenOnClick>
                 <button style="margin-left:15px; margin-top: 10px; width: 90%;">Finalizar la compra</button>
               </li>
             </ul>
@@ -63,7 +63,7 @@
     </nav>
   </header>
   <main>
-    <button class="left" onclick="leftScroll()">
+    <button class="left">
       <i class="fas fa-angle-double-left"></i>
     </button>
     <ul class="list-group list-group-horizontal position-relative overflow-auto fullWidth"
@@ -166,7 +166,7 @@
       </li>
     </ul>
     
-    <button class="right" onclick="rightScroll()">
+    <button class="right">
       <i class="fas fa-angle-double-right"></i>
     </button>
     
