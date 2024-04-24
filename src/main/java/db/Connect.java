@@ -25,7 +25,7 @@ public class Connect {
             String URL = "jdbc:mysql://localhost/ecommerce_db?allowPublicKeyRetrieval=true&autoReconnect=true&useSSL=false&characterEncoding=UTF-8";
             String DRIVER = "com.mysql.cj.jdbc.Driver";
             String USER = "root";
-            String PASSWORD = "123456";
+            String PASSWORD = "1234";
             Class.forName(DRIVER);
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (ClassNotFoundException ex) {
