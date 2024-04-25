@@ -44,6 +44,7 @@ function addProductToCart(id){
             }
 
             cartLoad();
+
         }
     });
 }
