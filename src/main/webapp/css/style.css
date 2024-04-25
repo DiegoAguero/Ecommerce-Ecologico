@@ -191,6 +191,13 @@ td
     height: 150px;
 }
 
+.grid {
+    display: grid;
+    gap: 0.5rem 0.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    grid-template-rows: auto;
+  }
+
 /*-----------Lista de cartas-----------*/
 
 .left {

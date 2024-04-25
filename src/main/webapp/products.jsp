@@ -76,14 +76,12 @@
         </header>
        
         <main>
-          <button class="left">
-            <i class="fas fa-angle-double-left"></i>
-          </button>
-          <ul id="products" class="list-group list-group-horizontal position-relative overflow-auto fullWidth"
+
+          <ul id="products" class="position-relative fullWidth grid"
           style="list-style: none; scrollbar-width: none;">
               <c:forEach var="product" items="${allProds}">
-                  <li class="productList" id=${product.id}>
-                      <div class="card h-100" style="width: 18rem;">
+                  <li class="productList" style="width: 18rem; margin-right: 30px;" id=${product.id}>
+                      <div class="card h-100" style="width: 18rem; margin-right: 30px;">
                       <img src="${product.image_url}" class="card-img-top cardImg" alt="Producto">
                       <div class="card-body">
                           <h5 class="card-title text-center">${product.name}</h5>
@@ -96,10 +94,6 @@
                   </li>
               </c:forEach>
           </ul>
-
-          <button class="right">
-            <i class="fas fa-angle-double-right"></i>
-          </button>
 
          
           <script src="./js/ajaxProducts.js"></script>
@@ -118,6 +112,9 @@
             <!--Grid row-->
             <div class="row">
               <!--Grid column-->
+              <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase"><a href="index.html" class="link">Inicio</a></h5>
+              </div>
               <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
                 <h5 class="text-uppercase"><a href="conocenos.html" class="link">conocenos</a></h5>
               </div>
