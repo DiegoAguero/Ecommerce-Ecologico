@@ -92,6 +92,16 @@ div.button
     width: 90%;
 }
 
+.menutop{
+    text-transform: uppercase !important;
+    color: white !important;
+    font-weight: 600 !important;
+}
+
+.menutop:hover{
+    font-size: 18px;
+}
+
 /*-----------Body-----------*/
 
 .left {

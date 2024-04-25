@@ -38,16 +38,16 @@
                     <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
                         <ul class="navbar-nav nav justify-content-center">
                             <li class="nav-item navli">
-                                <button class="nav-link active" onclick="reloadCategory(1)">Frutas y verduras</button>
+                                <button class="nav-link active menutop" onclick="reloadCategory(1)">Frutas y verduras</button>
                             </li>
                             <li class="nav-item navli">
-                                <button class="nav-link active" onclick="reloadCategory(2)">Frescos</button>
+                                <button class="nav-link active menutop" onclick="reloadCategory(2)">Frescos</button>
                             </li>
                             <li class="nav-item navli">
-                                <button class="nav-link active" onclick="reloadCategory(3)">Dulces y desayunos</button>
+                                <button class="nav-link active menutop" onclick="reloadCategory(3)">Dulces y desayunos</button>
                             </li>
                             <li class="nav-item navli">
-                                <button class="nav-link active" onclick="reloadCategory(4)">Bebidas y bodegas</button>
+                                <button class="nav-link active menutop" onclick="reloadCategory(4)">Bebidas y bodegas</button>
                             </li>
                         </ul>
                     </div> 
