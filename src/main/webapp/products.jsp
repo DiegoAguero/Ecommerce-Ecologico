@@ -72,7 +72,7 @@
                           </il>
                         </ul>
                         <li data-keepOpenOnClick>
-                          <button style="margin-left:15px; margin-top: 10px; width: 90%;">Finalizar la compra</button>
+                          <button class="cart" style="margin-left:15px; margin-top: 10px; width: 93%;">Finalizar la compra</button>
                         </li>
                       </ul>
                     </div>
@@ -83,7 +83,7 @@
           <ul id="products" class="position-relative fullWidth grid"
           style="list-style: none; scrollbar-width: none;">
               <c:forEach var="product" items="${allProds}">
-                  <li class="productList" style="width: 18rem;" id=${product.id}>
+                  <li class="productList" id=${product.id}>
                       <div class="card h-100" style="width: 18rem;">
                       <img src="${product.image_url}" class="card-img-top cardImg" alt="Producto">
                       <div class="card-body">
@@ -91,7 +91,7 @@
                           <p class="card-text text-center">€${product.price}</p>
                       </div>
                       <div class="card-body contenedor">
-                          <button onclick="addProductToCart(${product.id})">Añadir a la cesta</button>
+                          <button class="rounded-pill" onclick="addProductToCart(${product.id})">Añadir a la cesta</button>
                       </div>
                       </div>
                   </li>

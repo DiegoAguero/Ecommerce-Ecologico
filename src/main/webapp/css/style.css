@@ -156,7 +156,7 @@ div.button
 main
 {
     background-color: rgb(250, 255, 250);
-    padding: 50px;
+    padding: 50px 10px 50px 75px;
 }
 
 table, tr
@@ -193,8 +193,8 @@ td
 
 .grid {
     display: grid;
-    gap: 0.5rem 0rem;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 19rem));
+    gap: 1.5rem 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 18rem));
     grid-template-rows: auto;
   }
 
@@ -226,13 +226,18 @@ div.contenedor {
   
 button
 {
-    border-radius: 13px !important;
+    border-radius: 13px;
     background-color: rgb(148,234,141);
 }
 
 button:hover{
     background-color: rgb(94, 147, 87);
     color: white;
+}
+
+button.cart
+{
+    border-radius: 0px;
 }
 
 .trashbut

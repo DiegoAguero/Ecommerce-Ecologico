@@ -1,21 +1,22 @@
 
 $card-border-color: rgb(7, 122, 21);
 $card-bg: rgb(243, 255, 235);
-$card-border-radius: 10%;
+$card-border-radius: 13px;
 $card-border-width: 3px;
 $dropdown-bg: #73b56d;
 $border-width: 5px;
-$border-radius: 5px;
+$border-radius: 13px;
 $border-style: solid;
 $primary: #245d1f;
 $dropdown-border-color: rgb(7, 122, 21);
 
 $theme-colors: map-merge($theme-colors, (
   "primary": $primary
+  "card-border-radius": $card-border-radius
   "dropdown-bg": $dropdown-bg
   "border-width": $border-width
   "border-radius": $border-radius
   "dropdown-border-color": $dropdown-border-color
 ));
 
-@import "../node_modules/bootstrap/scss/bootstrap.scss"
+@import "../node_modules/bootstrap/scss/reboot"
