@@ -57,6 +57,9 @@
                     <div class="btn-group dropstart navCarrito" style="position: absolute;">
                       <button type="button" class="btn-secondary dropdown-toggle cartpos" data-bs-toggle="dropdown" aria-expanded="false" onclick="showDropdownCart()">
                         <i class="fas fa-shopping-cart fa-xl text-dark"></i>
+                        <div class="text-center navNumber" id="hideNumber">
+                          <p id="prodsInCart" style="color: white; font-size: small;">0</p>
+                        </div>
                       </button>
                       <ul class="dropdown-menu" data-keepOpenOnClick>
                         <!-- Dropdown -->
