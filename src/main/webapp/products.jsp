@@ -16,13 +16,13 @@
         <!--Pruebas para el carrito-->
         <script src="https://kit.fontawesome.com/60f68411d6.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-
         <!--Scroll-->
         <script src="js/scroll.js"></script>
-
+        <script src="js/cart.js"></script>
+        
         <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <link rel="stylesheet" href="./scss/styles.css" />
-       
+        
         <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
       </head>
     <body>
@@ -51,29 +51,25 @@
                             </li>
                         </ul>
                     </div> 
-                    <!-- Carrito -->
-          <div class="btn-group dropstart navCarrito" style="position: absolute;">
-            <button type="button" style="width: 60px; height: 40px; border-radius: 30px;" class="btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" onclick="showDropdownCart()">
-              <i class="fas fa-shopping-cart fa-xl text-dark"></i>
-            </button>
-            <ul class="dropdown-menu" data-keepOpenOnClick>
-              <!-- Dropdown -->
-              <ul class="overflow-auto" data-keepOpenOnClick id="dropdownCart" style="height: 150px; width:40vw; padding-left: 10px; padding-right: 10px;" data-keepOpenOnClick>
-                 
-                <il class="carritoil">  
-                  <p class="carritop">Nombre de producto</p>
-                  <button class="trashbut">
-                    <i class="fas fa-trash fa-lg text-dark text-center carritoi"></i>
-                  </button>
-                </il>
-              </ul>
-              <li data-keepOpenOnClick>
-                <button style="margin-left:15px; margin-top: 10px; width: 90%;">Finalizar la compra</button>
-              </li>
-            </ul>
-          </div>
-                </div>
-            </nav>
+                    <div class="btn-group dropstart navCarrito" style="position: absolute;">
+                      <button type="button" style="width: 60px; height: 40px; border-radius: 30px;" class="btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" onclick="showDropdownCart()">
+                        <i class="fas fa-shopping-cart fa-xl text-dark"></i>
+                      </button>
+                      <ul class="dropdown-menu" data-keepOpenOnClick>
+                        <!-- Dropdown -->
+                        <ul class="overflow-auto" data-keepOpenOnClick id="dropdownCart" style="height: 150px; width:40vw; padding-left: 10px; padding-right: 10px;" data-keepOpenOnClick>
+                          <il class="carritoil">  
+                            <p class="carritop">Nombre de producto</p>
+                            <button class="trashbut">
+                              <i class="fas fa-trash fa-lg text-dark text-center carritoi"></i>
+                            </button>
+                          </il>
+                        </ul>
+                        <li data-keepOpenOnClick>
+                          <button style="margin-left:15px; margin-top: 10px; width: 90%;">Finalizar la compra</button>
+                        </li>
+                      </ul>
+                    </div>
         </header>
        
         <main>
