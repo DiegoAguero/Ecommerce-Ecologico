@@ -219,8 +219,13 @@ div.contenedor {
   
 button
 {
+    border-radius: 13px !important;
     background-color: rgb(148,234,141);
-    
+}
+
+button:hover{
+    background-color: rgb(94, 147, 87);
+    color: white;
 }
 
 .trashbut
@@ -267,4 +272,8 @@ footer
 {
     text-decoration: none;
     color:inherit;
+}
+
+.link:hover{
+    font-size: 23px;
 }
