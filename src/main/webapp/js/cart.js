@@ -9,16 +9,40 @@ function addProductToCart(id){
         type: 'GET',
         dataType:'json',
         success: (data)=>{
+            let bgColors = [
+                "linear-gradient(to right, #00b09b, #96c93d)",
+                "linear-gradient(to right, #ff5f6d, #ffc371)",
+              ],
+              i = 0;
             let obj = {};
-            let prodFinded = cartProducts.some(prod => prod.id === id);
-            if(prodFinded){
+            let isProdFinded = cartProducts.some(prod => prod.id === id);
+            if(isProdFinded){
                 let prodFinded = cartProducts.find(prod => prod.id === id);
                 prodFinded.quantity++;
+                Toastify({
+                    text:`Se añadió ${prodFinded.name} al carrito!`,
+                    gravity:"bottom",
+                    position: "right",
+                    duration: 3000,
+                    style:{
+                        background: bgColors[i % 2]
+                    }
+                }).showToast();
             }else{
                 obj = data;
                 obj.quantity = 1;
                 cartProducts.push(obj);
+                Toastify({
+                    text:`Se añadió ${obj.name} al carrito!`,
+                    gravity:"bottom",
+                    position: "right",
+                    duration: 3000,
+                    style:{
+                        background: bgColors[i % 2]
+                    }
+                }).showToast();
             }
+
             cartLoad();
         }
     });
@@ -104,6 +128,10 @@ $(function() {
 function showDropdownCart(){
     let ulDropdown = document.getElementById("dropdownCart");
     ulDropdown.innerHTML = "";
+    if(cartProducts.length == 0){
+        let listItem = `<p>No tienes ningun producto en el carrito! Añade uno para poder visualizarlo!</p>`;
+        ulDropdown.insertAdjacentHTML('beforeend', listItem);
+    }
     cartProducts.map(prods=>{
         let listItem = 
             `

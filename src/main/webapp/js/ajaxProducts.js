@@ -1,22 +1,11 @@
-// $(document).ready(function(){
-//     // let url = window.location.href;
-//     // let id = url.substring(url.lastIndexOf('=') + 1);
-//     // console.log('id:', id);
-
-// $(document).ready(function(){(
-
-// ;
-// });
 function reloadCategory(id){
     $.ajax({
         url: `apiProducts?id=${id}`,
         type: 'GET',
         dataType:'json',
         success: function(data){
-            // console.log(data);
             $("#products").html('');
             $.each(data, function(index, product){
-                // var listItem = `<li id=${product.id}>` + product.name + " - $" + product.price + "</li>";
                 let listItem = `
                 <li class="productList" id=${product.id}>
                     <div class="card h-100" style="width: 18rem;">
@@ -37,18 +26,5 @@ function reloadCategory(id){
         error: function(request, status, error){
             alert(status, error);
         }
-    });
-}
-function getOrderDetails(idOrder){
-    $.ajax({
-       url: `getOrderDetails?idOrder=${idOrder}`,
-       type: 'GET',
-       dataType: 'json',
-       success: function(response){
-            console.log("enviado");
-       },
-       error: function(xhr, status, error){
-            console.error(status);
-       }
     });
 }

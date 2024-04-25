@@ -39,10 +39,19 @@ function handleForm(event){
             if(response.status === "error"){
                 $.each(response.products, function(index, product){
                     $('#errorMessage').text(product.error);
-                    $('#showModal').modal('show');
+                    $('#showErrorModal').modal('show');
+                })
+            }else{
+                $.each(response.message, function(index, message){
+                    console.log(message.message);
+                    console.log(message);
+                    $('#successMessage').text(message);
+                    $('#showSuccessModal').modal('show');
+                    $('#form')[0].reset();
                 })
             }
             clearCart();
+            showCart();
         },
         error: function(xhr, status, error){
             console.error("Error al enviar el dato: ", error);

@@ -8,8 +8,10 @@
     
     <!--Pruebas para el carrito-->
     <script src="https://kit.fontawesome.com/60f68411d6.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.js" integrity="sha512-ZHzbWDQKpcZxIT9l5KhcnwQTidZFzwK/c7gpUUsFvGjEsxPusdUCyFxjjpc7e/Wj7vLhfMujNx7COwOmzbn+2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.css" integrity="sha512-kT0v1BxcibEO2Yc+6Z3W1gNsN+2cZ/U6uITqHhIJl8SAvt9vpO8llugdCPXA7cCnp8G1xbuSqHNMRaR3Zlz9yA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--Scroll-->
     <script src="./js/scroll.js"></script>
@@ -57,7 +59,6 @@
               </div>
             </ul>
           </div>
-
           </div>
       </div>
     </nav>
@@ -72,13 +73,13 @@
         <!--Carta para producto-->
 
         <div class="card" style="width: 18rem;">
-          <img src="./images/simbolo.png" class="card-img-top cardImg" alt="Producto">
+          <img src="https://shop.veritas.es/documents/10180/23257/31639_G.jpg" class="card-img-top cardImg" alt="Producto">
           <div class="card-body">
-            <h5 class="card-title text-center">Nombre producto</h5>
-            <p class="card-text text-center">Precio</p>
+            <h5 class="card-title text-center">Crema de chocolate vegana 270g</h5>
+            <p class="card-text text-center">€5.29</p>
           </div>
           <div class="card-body contenedor">
-            <button>Añadir a la cesta</a>
+            <button onclick="addProductToCart(11)">Añadir a la cesta</button>
           </div>
         </div>
 
@@ -87,14 +88,14 @@
       <li class="productList">
         <!--Carta para producto-->
 
-        <div class="card" style="width: 18rem;">
-          <img src="./images/simbolo.png" class="card-img-top cardImg" alt="Producto">
+        <div class="card h-100" style="width: 18rem;">
+          <img src="https://shop.veritas.es/documents/10180/23257/1047_G.jpg" class="card-img-top cardImg" alt="Producto">
           <div class="card-body">
-            <h5 class="card-title text-center">Nombre producto</h5>
-            <p class="card-text text-center">Precio</p>
+            <h5 class="card-title text-center">Manzana Royal Gala Granel 600g</h5>
+            <p class="card-text text-center">€2.25</p>
           </div>
           <div class="card-body contenedor">
-            <button>Añadir a la cesta</a>
+            <button onclick="addProductToCart(5)">Añadir a la cesta</button>
           </div>
         </div>
 
@@ -103,14 +104,14 @@
       <li class="productList">
         <!--Carta para producto-->
 
-        <div class="card" style="width: 18rem;">
-          <img src="./images/simbolo.png" class="card-img-top cardImg" alt="Producto">
+        <div class="card h-100" style="width: 18rem;">
+          <img src="https://shop.veritas.es/documents/10180/23257/18755_G.jpg" class="card-img-top cardImg" alt="Producto">
           <div class="card-body">
-            <h5 class="card-title text-center">Nombre producto</h5>
-            <p class="card-text text-center">Precio</p>
+            <h5 class="card-title text-center">Pepino frances Granel ECO 600g</h5>
+            <p class="card-text text-center">€2.67</p>
           </div>
           <div class="card-body contenedor">
-            <button>Añadir a la cesta</a>
+            <button onclick="addProductToCart(8)">Añadir a la cesta</button>
           </div>
         </div>
 
@@ -119,14 +120,14 @@
       <li class="productList">
         <!--Carta para producto-->
 
-        <div class="card" style="width: 18rem;">
-          <img src="./images/simbolo.png" class="card-img-top cardImg" alt="Producto">
+        <div class="card h-100" style="width: 18rem;">
+          <img src="https://shop.veritas.es/documents/10180/23257/38861_G.jpg" class="card-img-top cardImg" alt="Producto">
           <div class="card-body">
-            <h5 class="card-title text-center">Nombre producto</h5>
-            <p class="card-text text-center">Precio</p>
+            <h5 class="card-title text-center">Pan de grano trigo sarraceno 200g</h5>
+            <p class="card-text text-center">€3.15</p>
           </div>
           <div class="card-body contenedor">
-            <button>Añadir a la cesta</a>
+            <button onclick="addProductToCart(14)">Añadir a la cesta</button>
           </div>
         </div>
 
@@ -134,31 +135,29 @@
       </li>
       <li class="productList">
         <!--Carta para producto-->
-
-        <div class="card" style="width: 18rem;">
-          <img src="./images/simbolo.png" class="card-img-top cardImg" alt="Producto">
+        <div class="card h-100" style="width: 18rem;">
+          <img src="https://shop.veritas.es/documents/10180/23257/38875_G.jpg" class="card-img-top cardImg" alt="Producto">
           <div class="card-body">
-            <h5 class="card-title text-center">Nombre producto</h5>
-            <p class="card-text text-center">Precio</p>
+            <h5 class="card-title text-center">Bolsa de patatas 2kg</h5>
+            <p class="card-text text-center">€4.65</p>
           </div>
           <div class="card-body contenedor">
-            <button>Añadir a la cesta</a>
+            <button onclick="addProductToCart(9)">Añadir a la cesta</button>
           </div>
         </div>
-
         <!--Carta para producto-->
       </li>
       <li class="productList">
         <!--Carta para producto-->
 
-        <div class="card" style="width: 18rem;">
-          <img src="./images/simbolo.png" class="card-img-top cardImg" alt="Producto">
+        <div class="card h-100" style="width: 18rem;">
+          <img src="https://shop.veritas.es/documents/10180/23257/1035_G.jpg" class="card-img-top cardImg" alt="Producto">
           <div class="card-body">
-            <h5 class="card-title text-center">Nombre producto</h5>
-            <p class="card-text text-center">Precio</p>
+            <h5 class="card-title text-center">Piña natural unidad ECO</h5>
+            <p class="card-text text-center">€3.7</p>
           </div>
           <div class="card-body contenedor">
-            <button>Añadir a la cesta</a>
+            <button onclick="addProductToCart(4)">Añadir a la cesta</button>
           </div>
         </div>
 

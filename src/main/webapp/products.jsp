@@ -14,13 +14,15 @@
         <link rel="stylesheet" href="./css/style.css" />
     
         <!--Pruebas para el carrito-->
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <script src="https://kit.fontawesome.com/60f68411d6.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.js" integrity="sha512-ZHzbWDQKpcZxIT9l5KhcnwQTidZFzwK/c7gpUUsFvGjEsxPusdUCyFxjjpc7e/Wj7vLhfMujNx7COwOmzbn+2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastify-js/1.12.0/toastify.css" integrity="sha512-kT0v1BxcibEO2Yc+6Z3W1gNsN+2cZ/U6uITqHhIJl8SAvt9vpO8llugdCPXA7cCnp8G1xbuSqHNMRaR3Zlz9yA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!--Scroll-->
         <script src="js/scroll.js"></script>
         <script src="js/cart.js"></script>
         
-        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
         <link rel="stylesheet" href="./scss/styles.css" />
         
         <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
@@ -65,9 +67,9 @@
                             </button>
                           </il>
                         </ul>
-                        <div class="button" data-keepOpenOnClick>
-                          <a href="finalizarCompra.html" class="button">Finalizar la compra</a>
-                        </div>
+                        <li data-keepOpenOnClick>
+                          <button style="margin-left:15px; margin-top: 10px; width: 90%;">Finalizar la compra</button>
+                        </li>
                       </ul>
                     </div>
         </header>

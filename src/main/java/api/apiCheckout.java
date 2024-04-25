@@ -136,7 +136,12 @@ public class apiCheckout extends HttpServlet {
                     productToUpdate.setStock(newStock);
                     productQuery.updateProduct(productToUpdate, connect);
                 }
-                response.getWriter().write("{status: 'success'}");
+                JsonObject jsonResponse = new JsonObject();
+                jsonResponse.addProperty("status", "success");
+                JsonObject showSuccessMessage = new JsonObject();
+                showSuccessMessage.addProperty("message", "¡La compra ha sido completada con éxito!");
+                jsonResponse.add("message", showSuccessMessage);
+                response.getWriter().write(jsonResponse.toString());
             }else{
                 JsonObject jsonResponse = new JsonObject();
                 jsonResponse.addProperty("status", "error");
