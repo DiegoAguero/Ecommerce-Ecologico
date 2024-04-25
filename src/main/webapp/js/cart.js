@@ -20,6 +20,7 @@ function addProductToCart(id){
                 cartProducts.push(obj);
             }
             cartLoad();
+
         }
     });
 }

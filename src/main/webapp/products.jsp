@@ -51,8 +51,9 @@
                             </li>
                         </ul>
                     </div> 
+
                     <div class="btn-group dropstart navCarrito" style="position: absolute;">
-                      <button type="button" style="width: 60px; height: 40px; border-radius: 30px;" class="btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" onclick="showDropdownCart()">
+                      <button type="button" class="btn-secondary dropdown-toggle cartpos" data-bs-toggle="dropdown" aria-expanded="false" onclick="showDropdownCart()">
                         <i class="fas fa-shopping-cart fa-xl text-dark"></i>
                       </button>
                       <ul class="dropdown-menu" data-keepOpenOnClick>
@@ -93,14 +94,17 @@
                   </li>
               </c:forEach>
           </ul>
-  
-          
-      
+
           <button class="right">
             <i class="fas fa-angle-double-right"></i>
           </button>
+
+         
           <script src="./js/ajaxProducts.js"></script>
           <script src="js/cart.js"></script>
+
+
+
         </main>
        
         <footer class="text-center text-lg-start text-white"
