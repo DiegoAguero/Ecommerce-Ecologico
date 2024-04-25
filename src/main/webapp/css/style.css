@@ -230,7 +230,11 @@ button
     background-color: rgb(148,234,141);
 }
 
-button:hover{
+.rounded-pill:hover{
+    background-color: rgb(94, 147, 87);
+    color: white;
+}
+a.button:hover{
     background-color: rgb(94, 147, 87);
     color: white;
 }

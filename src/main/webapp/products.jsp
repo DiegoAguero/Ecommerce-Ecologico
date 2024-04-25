@@ -71,9 +71,9 @@
                             </button>
                           </il>
                         </ul>
-                        <li data-keepOpenOnClick>
-                          <button class="cart" style="margin-left:15px; margin-top: 10px; width: 93%;">Finalizar la compra</button>
-                        </li>
+                        <div class="button" data-keepOpenOnClick>
+                          <a href="finalizarCompra.html" class="button">Finalizar la compra</a>
+                        </div>
                       </ul>
                     </div>
         </header>
