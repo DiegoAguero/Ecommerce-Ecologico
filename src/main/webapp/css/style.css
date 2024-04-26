@@ -1,9 +1,9 @@
 
 /*-----------Header-----------*/
 
-.navbar
+header
 {
-    height: 60px;
+    min-height: 80px;
 }
 
 .navbar-toggler
