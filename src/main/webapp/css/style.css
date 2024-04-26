@@ -162,6 +162,7 @@ main
 table, tr
 {
     border:3px solid black;
+    border-radius: 10px;
     height: auto;
     margin: 10px;
     padding: 10px;
@@ -169,10 +170,12 @@ table, tr
 
 td
 {
+    
     border: 3px solid black;
+    border-radius: 10px;
     height: 150px;
     padding: 10px;
-    background-color: rgb(243, 255, 235);
+    background-color: whitesmoke;
 }
 
 .tableText
