@@ -1,8 +1,25 @@
 var cartProducts = [];
 document.addEventListener("DOMContentLoaded", ()=>{
-    cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
-    cartLoad();
+    if(window.location.href === "http://localhost:8080/Ecommerce-Ecologico/finalizarCompra.html"){
+        cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+        cartLoad();
+    }else{
+        cartProducts = JSON.parse(localStorage.getItem('cart')) || [];
+        cartLoad();
+        checkCartProducts();
+
+    }
 })
+function checkCartProducts(){
+    let numberCart = document.getElementById("prodsInCart");
+    numberCart.textContent = "0";
+    cartProducts.map(prod=>{
+        // numberCart
+        let newNumber = parseInt(numberCart.textContent);
+        newNumber++;
+        numberCart.textContent = newNumber.toString();
+    })
+}
 function addProductToCart(id){
     $.ajax({
         url: `apiAddToCart?idProd=${id}`,
@@ -12,8 +29,8 @@ function addProductToCart(id){
             let bgColors = [
                 "linear-gradient(to right, #00b09b, #96c93d)",
                 "linear-gradient(to right, #ff5f6d, #ffc371)",
-              ],
-              i = 0;
+            ]
+            let i = 0;
             let obj = {};
             let isProdFinded = cartProducts.some(prod => prod.id === id);
             if(isProdFinded){
@@ -32,6 +49,10 @@ function addProductToCart(id){
                 obj = data;
                 obj.quantity = 1;
                 cartProducts.push(obj);
+                let numberCart = document.getElementById("prodsInCart");
+                let newNumber = parseInt(numberCart.textContent);
+                newNumber++;
+                numberCart.textContent = newNumber.toString();
                 Toastify({
                     text:`Se añadió ${obj.name} al carrito!`,
                     gravity:"bottom",
@@ -55,6 +76,10 @@ function removeFromCart(productId){
         if(prod.id === productId){
             if(prod.quantity === 1){
                 cartProducts = cartProducts.filter(product => product.id !== productId);
+                let numberCart = document.getElementById("prodsInCart");
+                let newNumber = parseInt(numberCart.textContent);
+                newNumber--;
+                numberCart.textContent = newNumber.toString();
             }
             prod.quantity--;
             cartLoad();
@@ -99,10 +124,11 @@ function showCart(){
         getUlById.insertAdjacentHTML('beforeend', listItem);
     })
     totalProdPill.innerHTML = `${cartProducts.length}`;
+    let totalPriceRounded = totalPrice.toFixed(2);
     let totalPriceHTML = `
         <li class="list-group-item d-flex justify-content-between">
             <span>Total: (EUR)</span>
-            <strong id="totalPrice">€${totalPrice}</strong>
+            <strong id="totalPrice">€${totalPriceRounded}</strong>
         </li>
     `
     getUlById.insertAdjacentHTML('beforeend', totalPriceHTML);

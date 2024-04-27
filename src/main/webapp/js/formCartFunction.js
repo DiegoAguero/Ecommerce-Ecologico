@@ -1,4 +1,3 @@
-// import Swal from "../node_modules/sweetalert2/dist/sweetalert2.js";
 document.addEventListener("DOMContentLoaded", ()=>{
     let form = document.getElementById("form");
     form.addEventListener('submit', handleForm);
@@ -38,16 +37,19 @@ function handleForm(event){
         success: function(response){
             if(response.status === "error"){
                 $.each(response.products, function(index, product){
-                    $('#errorMessage').text(product.error);
-                    $('#showErrorModal').modal('show');
+                    Swal.fire({
+                        title: 'Ugh...',
+                        text:product.error,
+                        confirmButtonText: "Okay...",
+                    })
                 })
             }else{
                 $.each(response.message, function(index, message){
-                    console.log(message.message);
-                    console.log(message);
-                    $('#successMessage').text(message);
-                    $('#showSuccessModal').modal('show');
-                    $('#form')[0].reset();
+                    Swal.fire({
+                        title: 'Enhorabuena!',
+                        text:message,
+                        confirmButtonText: "Gracias!",
+                    })
                 })
             }
             clearCart();
