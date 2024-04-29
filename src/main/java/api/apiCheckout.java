@@ -103,7 +103,6 @@ public class apiCheckout extends HttpServlet {
                 Product productToUpdate = productQuery.getProductById(idProduct, connect);
                 if(productToUpdate.getStock() < productQuantity){
                     Product prod = productQuery.getProductById(idProduct, connect);
-                    // Product product = new Product(prod.getId(), prod.getName(), prod.getDescription(), prod.getPrice(), prod.getStock(), prod.getIdCategory(), prod.getImage_url());
                     productWithoutStock.add(prod);
                     isStockEnough = false;
                 }
@@ -151,7 +150,6 @@ public class apiCheckout extends HttpServlet {
                     errorProducts.add(errorProduct);    
                 }
                 jsonResponse.add("products", errorProducts);
-                System.out.println(jsonResponse);
                 response.getWriter().write(jsonResponse.toString()); 
             }
 

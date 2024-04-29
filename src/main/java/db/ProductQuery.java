@@ -24,7 +24,7 @@ public class ProductQuery {
         st.setString(6, product.getImage_url());
         int rowsInserted = st.executeUpdate();
         if(rowsInserted == 0){
-            throw new Error("Error updating the Category...");
+            throw new Error("Error inserting the Product...");
         }
         return rowsInserted;
     }
