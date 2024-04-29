@@ -1,10 +1,11 @@
 
 /*-----------Header-----------*/
 
-header
+.navbar
 {
-    min-height: 80px;
+    min-height: 63px;
 }
+
 
 .navbar-toggler
 {
@@ -69,7 +70,7 @@ header
 }
 
 .navli{
-    margin-right: 100px;
+    text-align: center;
 }
 
 .head

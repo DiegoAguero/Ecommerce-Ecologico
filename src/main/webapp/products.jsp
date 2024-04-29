@@ -29,7 +29,7 @@
       </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary head">
+          <nav class="navbar navbar-expand-lg bg-body-tertiary, head" style="padding-left:10%;">
                 <div class="container-fluid" style="justify-content: center;">
                     <a class="navbar-brand navLogo" href="index.html"><img id="logo" src="./images/simbolo.png"
                         alt="Logo GreenEssentials" /></a>

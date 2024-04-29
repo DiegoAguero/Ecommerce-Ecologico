@@ -9,14 +9,10 @@ $border-radius: 13px;
 $border-style: solid;
 $primary: #245d1f;
 $dropdown-border-color: rgb(7, 122, 21);
+$body-text-align: center;
 
 $theme-colors: map-merge($theme-colors, (
-  "primary": $primary
-  "card-border-radius": $card-border-radius
-  "dropdown-bg": $dropdown-bg
-  "border-width": $border-width
-  "border-radius": $border-radius
-  "dropdown-border-color": $dropdown-border-color
+  "body-text-align": $body-text-align
 ));
 
 @import "../node_modules/bootstrap/scss/reboot"
