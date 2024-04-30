@@ -29,7 +29,7 @@
 
 <body style="overflow-x: hidden;">
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary, head" style="padding-left:10%;">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary, head">
           <div class="container-fluid" style="justify-content: center;">
             <a class="navbar-brand navLogo" href="index.html"><img id="logo" src="./images/simbolo.png"
                 alt="Logo GreenEssentials" /></a>
@@ -40,19 +40,22 @@
             <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
               <ul class="navbar-nav nav justify-content-center">
                 <li class="nav-item navli">
-                  <a class="nav-link active menutop" href="/Ecommerce-Ecologico/products">Nuestros productos!</a>
+                  <a class="nav-link active menutop"  href="/Ecommerce-Ecologico/products">Nuestros productos!</a>
                 </li>
               </ul>
             </div>
   
             <!-- Carrito
             <div class="btn-group dropstart navCarrito" style="position: absolute;">
-              <button type="button" style="width: 60px; height: 40px; border-radius: 30px;" class="btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <button type="button" class="btn-secondary dropdown-toggle cartpos" data-bs-toggle="dropdown" aria-expanded="false" onclick="showDropdownCart()">
                 <i class="fas fa-shopping-cart fa-xl text-dark"></i>
+                <div class="text-center navNumber" id="hideNumber">
+                  <p id="prodsInCart" style="color: white; font-size: small;">0</p>
+                </div>
               </button>
-              <ul class="dropdown-menu">
-
-                <ul class="overflow-auto" style="height: 150px; padding-left: 10px; padding-right: 10px;">
+              <ul class="dropdown-menu" data-keepOpenOnClick>
+                
+                <ul class="overflow-auto" data-keepOpenOnClick id="dropdownCart" style="height: 150px; width:40vw; padding-left: 10px; padding-right: 10px;" data-keepOpenOnClick>
                    
                   <il class="carritoil">  
                     <p class="carritop">Nombre de producto</p>
@@ -61,13 +64,12 @@
                     </button>
                   </il>
                 </ul>
-                <il>
-                  <button style="margin-left:15px; margin-top: 10px; width: 90%;">Finalizar la compra</button>
-                </il>
+                <div class="button" data-keepOpenOnClick>
+                  <a href="finalizarCompra.html" class="button">Finalizar la compra</a>
+                </div>
               </ul>
             </div>
-        -->
-  
+            -->
             </div>
         </div>
       </nav>

@@ -40,16 +40,10 @@
               <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
                 <ul class="navbar-nav nav justify-content-center">
                             <li class="nav-item navli navlipro">
-                                <button class="nav-link active menutop" style="padding-left: 50px; padding-right: 50px;" onclick="reloadCategory(1)">Frutas y verduras</button>
+                                <button class="nav-link active menutop" style="padding-left: 50px; padding-right: 50px;" onclick="reloadCategory(1)">Frutas</button>
                             </li>
                             <li class="nav-item navli navlipro">
-                                <button class="nav-link active menutop" style="padding-left: 50px; padding-right: 50px;" onclick="reloadCategory(2)">Frescos</button>
-                            </li>
-                            <li class="nav-item navli navlipro">
-                                <button class="nav-link active menutop" style="padding-left: 50px; padding-right: 50px;" onclick="reloadCategory(3)">Dulces y desayunos</button>
-                            </li>
-                            <li class="nav-item navli navlipro">
-                                <button class="nav-link active menutop" style="padding-left: 50px; padding-right: 50px;" onclick="reloadCategory(4)">Bebidas y bodegas</button>
+                                <button class="nav-link active menutop" style="padding-left: 50px; padding-right: 50px;" onclick="reloadCategory(2)">Verduras</button>
                             </li>
                         </ul>
                     </div> 
