@@ -40,10 +40,10 @@
               <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
                 <ul class="navbar-nav nav justify-content-center">
                             <li class="nav-item navli navlipro">
-                                <button class="nav-link active menutop" style="padding-left: 50px; padding-right: 50px;" onclick="reloadCategory(1)">Frutas</button>
+                                <button class="nav-link active menutop" style="padding-left: 50px; padding-right: 50px;" onclick="reloadCategory(5)">Frutas</button>
                             </li>
                             <li class="nav-item navli navlipro">
-                                <button class="nav-link active menutop" style="padding-left: 50px; padding-right: 50px;" onclick="reloadCategory(2)">Verduras</button>
+                                <button class="nav-link active menutop" style="padding-left: 50px; padding-right: 50px;" onclick="reloadCategory(6)">Verduras</button>
                             </li>
                         </ul>
                     </div> 
