@@ -13,6 +13,7 @@ function reloadCategory(id){
                     <div class="card-body">
                         <h5 class="card-title text-center">${product.name}</h5>
                         <p class="card-text text-center">€${product.price}</p>
+                        <p class="card-text text-center">Stock: ${product.stock}</p>
                     </div>
                     <div class="card-body contenedor">
                         <button class="rounded-pill" onclick="addProductToCart(${product.id})">Añadir a la cesta</button>
